@@ -2,7 +2,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 
-class Actions(ABC):
+class ActionsInt(ABC):
     @abstractmethod
     def search(self,path_to_img:str) -> tuple[int,int]:
         pass

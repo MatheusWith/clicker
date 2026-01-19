@@ -1,4 +1,4 @@
-from app.actions.actionsInt import Actions
+from app.actions.actionsInt import ActionsInt
 from abc import ABC, abstractmethod
 
 
