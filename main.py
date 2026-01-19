@@ -1,5 +1,9 @@
+from app.config.setup import configure
+from app.config.config import settings
+
+
 def main():
-    print("Hello from clicker!")
+    configure(settings=settings)
 
 
 if __name__ == "__main__":
