@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 
 class Flow:
-    def __init__(self, actions: Actions):
+    def __init__(self, actions: ActionsInt):
         self.actions = actions
 
 
