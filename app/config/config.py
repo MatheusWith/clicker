@@ -2,6 +2,11 @@ import os
 from enum import Enum
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+
+class CredentialsSettings(BaseSettings):
+    LOGIN: str
+    PASSWORD: str
+
 class PyAutoGUISettings(BaseSettings):
     FAILSAFE: bool = True
     PAUSE: int = 2.5
@@ -20,6 +25,7 @@ class EnvironmentSettings(BaseSettings):
 class Settings(
     EnvironmentSettings,
     PyAutoGUISettings,
+    CredentialsSettings,
 ):
     model_config = SettingsConfigDict(
         env_file = os.path.join(os.path.dirname(os.path.realpath(__file__)),"..","..",".env"),
