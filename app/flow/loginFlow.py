@@ -3,6 +3,8 @@ from app.flows.flow import LoginFlow
 from app.actions.actionsInt import ActionsInt
 from app.core.config import settings
 from app.core.exceptions import IMGDoesntExistError
+from app.core.exceptions import LoginSettinsIsNoneError
+from app.core.exceptions import PasswordSettinsIsNoneError
 
 
 
@@ -19,9 +21,9 @@ class LoginFlowImpl(LoginFlow):
         path_password = Path(path_to_password)
         path_login = Path(path_to_login)
         if settings.LOGIN is None:
-            print("login from settings is none")
+            raise LoginSettinsIsNoneError
         if settings.PASSWORD is None:
-            print("password from settings is none")
+            raise PasswordSettinsIsNoneError
 
         if not (path_username.exists() and path_username.is_file()):
             raise IMGDoesntExistError(path_username)
