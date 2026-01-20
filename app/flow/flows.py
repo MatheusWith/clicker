@@ -17,3 +17,7 @@ class SellerFlow(Flow,ABC):
     def seller(self):
         pass
 
+class ProductFlow(Flow,ABC):
+    @abstractmethod
+    def product(self):
+        pass
