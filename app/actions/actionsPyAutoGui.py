@@ -12,7 +12,7 @@ class ActionPyAutoGUIImpl(ActionsInt):
     def right_click(self, x:int, y:int, clicks:int = 1):
         pyautogui.click(x=x,y=y,button="right",clicks = clicks)
 
-    def write(self,text:str):
+    def write(self,text:str,interval = 0.3):
         pyautogui.typewrite(text,interval=0.3)
 
 def getActionPyAutoGUIImpl() -> ActionsInt:
