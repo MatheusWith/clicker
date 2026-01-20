@@ -1,16 +1,17 @@
 import pyautogui
 from typing import Any
-from app.core.config import (
+from app.config.config import (
     EnvironmentSettings,
     PyAutoGUISettings,
-    settings,
+    CredentialsSettings,
 )
 
 
 def configure(
     settings:(
-        EnvironmentSettings,
-        PyAutoGUISettings,
+        EnvironmentSettings
+        | PyAutoGUISettings
+        | CredentialsSettings
     ),
     **kwargs: Any,    
 ):
