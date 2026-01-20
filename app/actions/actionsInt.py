@@ -8,13 +8,13 @@ class ActionsInt(ABC):
         pass
 
     @abstractmethod
-    def left_click(self,x: int, y: int) -> None:
+    def left_click(self,x: int, y: int, clicks:int = 1) -> None:
         pass
 
     @abstractmethod
-    def right_click(self, x:int, y:int) -> None:
+    def right_click(self, x:int, y:int, clicks:int = 1) -> None:
         pass
 
     @abstractmethod
-    def write(self, text: str) -> None:
+    def write(self, text: str,interval = 0.3) -> None:
         pass
