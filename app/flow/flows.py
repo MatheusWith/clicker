@@ -12,3 +12,12 @@ class LoginFlow(Flow,ABC):
     def login(self):
         pass
 
+class SellerFlow(Flow,ABC):
+    @abstractmethod
+    def seller(self):
+        pass
+
+class ProductFlow(Flow,ABC):
+    @abstractmethod
+    def product(self):
+        pass
