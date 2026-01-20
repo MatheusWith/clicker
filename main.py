@@ -1,6 +1,6 @@
 from app.config.setup import configure
 from app.config.config import settings
-from app.actions.actionsPyAutoGui import ActionsInt
+from app.actions.actionsInt import ActionsInt
 from app.actions.actionsPyAutoGui import getActionPyAutoGUIImpl
 from app.flow.flows import LoginFlow
 from app.flow.loginFlow import getLoginFlowImpl

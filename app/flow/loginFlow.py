@@ -1,5 +1,5 @@
 from pathlib import Path
-from app.flows.flow import LoginFlow
+from app.flow.flows import LoginFlow
 from app.actions.actionsInt import ActionsInt
 from app.config.config import settings
 from app.config.exceptions import IMGDoesntExistError

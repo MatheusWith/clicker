@@ -1,18 +1,11 @@
 import pyautogui
 from typing import Any
-from app.config.config import (
-    EnvironmentSettings,
-    PyAutoGUISettings,
-    CredentialsSettings,
-)
-
+from app.config.config import EnvironmentSettings,PyAutoGUISettings,CredentialsSettings
 
 def configure(
-    settings:(
+    settings:
         EnvironmentSettings
-        | PyAutoGUISettings
-        | CredentialsSettings
-    ),
+        | PyAutoGUISettings,
     **kwargs: Any,    
 ):
     if isinstance(settings,PyAutoGUISettings):
