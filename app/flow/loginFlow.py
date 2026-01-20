@@ -1,10 +1,10 @@
 from pathlib import Path
-from app.flows.flow import LoginFlow
+from app.flow.flows import LoginFlow
 from app.actions.actionsInt import ActionsInt
-from app.core.config import settings
-from app.core.exceptions import IMGDoesntExistError
-from app.core.exceptions import LoginSettinsIsNoneError
-from app.core.exceptions import PasswordSettinsIsNoneError
+from app.config.config import settings
+from app.config.exceptions import IMGDoesntExistError
+from app.config.exceptions import LoginSettinsIsNoneError
+from app.config.exceptions import PasswordSettinsIsNoneError
 
 
 

@@ -1,8 +1,8 @@
 import pyautogui
-from app.flows.action import Actions
+from app.actions.actionsInt import ActionsInt
 
 
-class ActionPyAutoGUIImpl(Actions):
+class ActionPyAutoGUIImpl(ActionsInt):
     def search(self,path_to_img:str):
         return pyautogui.locateCenterOnScreen(path_to_img)
 
@@ -13,7 +13,7 @@ class ActionPyAutoGUIImpl(Actions):
         pyautogui.click(x=x,y=y,button="right",clicks = clicks)
 
     def write(self,text:str):
-        pyautogui.typewrite(text,interval=0.5)
+        pyautogui.typewrite(text,interval=0.3)
 
-def getActionPyAutoGUIImpl() -> Actions:
+def getActionPyAutoGUIImpl() -> ActionsInt:
     return ActionPyAutoGUIImpl()
