@@ -2,6 +2,8 @@ from pathlib import Path
 from app.flow.flows import DocumentosFlow
 from app.actions.actionsInt import ActionsInt
 from app.config.exceptions import IMGDoesntExistError
+from app.config.exceptions import EndDateSettinsIsNoneError, StartDateSettinsIsNoneError
+from app.config.config import settings
 
 
 class DocumentosFlowImpl(DocumentosFlow):
@@ -33,6 +35,14 @@ class DocumentosFlowImpl(DocumentosFlow):
         self.path_to_data_final_label:str = path_to_data_final_label
         self.path_to_search:str = path_to_search
 
+        if settings.START_DATE is None:
+            raise StartDateSettinsIsNoneError
+        if settings.END_DATE is None:
+            raise EndDateSettinsIsNoneError
+
+        self.start_date = settings.START_DATE
+        self.end_date = settings.END_DATE
+
     def _click_in_documento(self):
         doc_x, doc_y = self.actions.search(
             self.path_to_documento
@@ -53,7 +63,7 @@ class DocumentosFlowImpl(DocumentosFlow):
             ini_y,
         )
 
-        self.actions.write("01012020")
+        self.actions.write(self.start_date)
 
     def _write_data_final(self):
         end_x, end_y = self.actions.search(
@@ -66,13 +76,13 @@ class DocumentosFlowImpl(DocumentosFlow):
             end_y,
         )
 
-        self.actions.write("31122030")
+        self.actions.write(self.end_date)
         
 
     def documentos(self):
         self._click_in_documento()
         self._write_data_inicial()
-        self._write_data_inicial()
+        self._write_data_final()
 
         search_x,search_y = self.actions.search(
             self.path_to_search
@@ -80,7 +90,7 @@ class DocumentosFlowImpl(DocumentosFlow):
 
         self.actions.left_click(
             search_x,
-            search_y
+            search_y,
         )
 
 
