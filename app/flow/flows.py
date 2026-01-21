@@ -37,3 +37,9 @@ class DocumentosFlow(Flow,ABC):
     @abstractmethod
     def documentos(self):
         pass
+
+
+class TransmitirFlow(Flow,ABC):
+    @abstractmethod
+    def transmitir(self):
+        pass
