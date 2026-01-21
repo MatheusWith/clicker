@@ -78,7 +78,6 @@ class DocumentosFlowImpl(DocumentosFlow):
 
         self.actions.write(self.end_date)
         
-
     def documentos(self):
         self._click_in_documento()
         self._write_data_inicial()
@@ -93,5 +92,20 @@ class DocumentosFlowImpl(DocumentosFlow):
             search_y,
         )
 
+
+def getDocumentosFlowImpl(
+    actions:ActionsInt,
+    path_to_documento:str,
+    path_to_data_inicial_label:str,
+    path_to_data_final_label:str,
+    path_to_search:str,
+) -> DocumentosFlow:
+    return DocumentosFlowImpl(
+        actions=actions,
+        path_to_documento=path_to_documento,
+        path_to_data_inicial_label=path_to_data_inicial_label,
+        path_to_data_final_label=path_to_data_final_label,
+        path_to_search=path_to_search,
+    )
 
 

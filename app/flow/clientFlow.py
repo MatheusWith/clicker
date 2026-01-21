@@ -42,3 +42,16 @@ class ClientFlowImpl(ClientFlow):
         self.actions.left_click(search_x, search_y)
 
 
+def getClientFlowImpl(
+    actions:ActionsInt,
+    path_to_client:str,
+    path_to_search:str,
+) -> ClientFlow:
+    return ClientFlowImpl(
+        actions=actions,
+        path_to_client=path_to_client,
+        path_to_search=path_to_search,
+    )
+
+
+
