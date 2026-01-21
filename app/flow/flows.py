@@ -21,3 +21,13 @@ class ProductFlow(Flow,ABC):
     @abstractmethod
     def product(self):
         pass
+
+class ClientFlow(Flow,ABC):
+    @abstractmethod
+    def client(self):
+        pass
+
+class PlanoPagamento(Flow,ABC):
+    @abstractmethod
+    def plano_pagamento(self):
+        pass
