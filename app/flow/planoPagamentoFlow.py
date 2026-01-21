@@ -38,3 +38,14 @@ class PlanoPagamentoFlowImpl(PlanoPagamento):
         )
         
         self.actions.left_click(search_x, search_y)
+
+def getPlanoPagamentoFlowImpl(
+    actions:ActionsInt,
+    path_to_plano_pagamento:str,
+    path_to_search:str,
+) -> PlanoPagamento:
+    return PlanoPagamentoFlowImpl(
+        actions=actions,
+        path_to_plano_pagamento=path_to_plano_pagamento,
+        path_to_search=path_to_search,
+    )
