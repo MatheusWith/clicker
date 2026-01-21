@@ -26,3 +26,8 @@ class ClientFlow(Flow,ABC):
     @abstractmethod
     def client(self):
         pass
+
+class PlanoPagamento(Flow,ABC):
+    @abstractmethod
+    def plano_pagamento(self):
+        pass
