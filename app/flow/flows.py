@@ -27,15 +27,14 @@ class ClientFlow(Flow,ABC):
     def client(self):
         pass
 
-class PlanoPagamento(Flow,ABC):
+class PaymentPlanFlow(Flow,ABC):
     @abstractmethod
-    def plano_pagamento(self):
+    def payment_plan(self):
         pass
 
-
-class DocumentosFlow(Flow,ABC):
+class DocumentFlow(Flow,ABC):
     @abstractmethod
-    def documentos(self):
+    def documnet(self):
         pass
 
 
