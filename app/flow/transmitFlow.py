@@ -11,15 +11,13 @@ class TransmitFlowImpl(TransmitFlow):
         path_to_transmitir:str,
     ):
         super().__init__(actions)
-
-        path_transmitir = Path(path_to_transmitir)
-
-        if not(path_transmitir.exists() and path_transmitir.is_file()):
-            raise IMGDoesntExistError(path_to_transmitir)
+        self._enshure_paths_exist([
+            path_to_transmitir
+        ])
 
         self.path_to_transmitir:str = path_to_transmitir
 
-    def transmitir(self):
+    def transmit(self):
         transmitir_x, transmitir_y = self.actions.search(
             self.path_to_transmitir
         )

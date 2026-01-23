@@ -14,7 +14,7 @@ class ClientFlowImpl(ClientFlow):
         super().__init__(actions)
         self._enshure_paths_exist([
             path_to_client,
-            path_to_search
+            path_to_search,
         ])
 
         self.path_to_client:str = path_to_client
