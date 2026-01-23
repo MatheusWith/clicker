@@ -2,32 +2,43 @@ from app.actions.actionsInt import ActionsInt
 from abc import ABC, abstractmethod
 
 
-class Flow:
+class FlowInt:
     def __init__(self, actions: ActionsInt):
         self.actions = actions
 
 
-class LoginFlow(Flow,ABC):
+class LoginFlow(FlowInt,ABC):
     @abstractmethod
     def login(self):
         pass
 
-class SellerFlow(Flow,ABC):
+class SellerFlow(FlowInt,ABC):
     @abstractmethod
     def seller(self):
         pass
 
-class ProductFlow(Flow,ABC):
+class ProductFlow(FlowInt,ABC):
     @abstractmethod
     def product(self):
         pass
 
-class ClientFlow(Flow,ABC):
+class ClientFlow(FlowInt,ABC):
     @abstractmethod
     def client(self):
         pass
 
-class PlanoPagamento(Flow,ABC):
+class PaymentPlanFlow(FlowInt,ABC):
     @abstractmethod
-    def plano_pagamento(self):
+    def payment_plan(self):
+        pass
+
+class DocumentFlow(FlowInt,ABC):
+    @abstractmethod
+    def document(self):
+        pass
+
+
+class TransmitFlow(FlowInt,ABC):
+    @abstractmethod
+    def transmit(self):
         pass

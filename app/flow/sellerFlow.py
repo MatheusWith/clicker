@@ -43,3 +43,14 @@ class SellerFlowImpl(SellerFlow):
             search_x,
             search_y,
         )
+
+def getSellerFlowImpl(
+    actions:ActionsInt,
+    path_to_vendendor:str,
+    path_to_search:str,
+) -> SellerFlow:
+    return SellerFlowImpl(
+        actions=actions,
+        path_to_vendendor=path_to_vendendor,
+        path_to_search=path_to_search,
+    )
