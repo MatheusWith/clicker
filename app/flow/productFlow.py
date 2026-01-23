@@ -73,3 +73,18 @@ class ProductFlowImpl(ProductFlow):
         )
         
         self.actions.left_click(search_x, search_y)
+
+def getProductFlowImpl(
+    actions:ActionsInt,
+    path_to_produto:str,
+    path_to_box_table:str,
+    path_to_box_produto_saldo:str,
+    path_to_search:str,
+) -> ProductFlow:
+    return ProductFlowImpl(
+        actions=actions,
+        path_to_produto=path_to_produto,
+        path_to_box_table=path_to_box_table,
+        path_to_box_produto_saldo=path_to_box_produto_saldo,
+        path_to_search=path_to_search,
+    )
