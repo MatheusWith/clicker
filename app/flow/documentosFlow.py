@@ -1,12 +1,12 @@
 from pathlib import Path
-from app.flow.flows import DocumentosFlow
+from app.flow.flows import DocumentFlow
 from app.actions.actionsInt import ActionsInt
 from app.config.exceptions import IMGDoesntExistError
 from app.config.exceptions import EndDateSettinsIsNoneError, StartDateSettinsIsNoneError
 from app.config.config import settings
 
 
-class DocumentosFlowImpl(DocumentosFlow):
+class DocumentFlowImpl(DocumentFlow):
     def __init__(
         self,
         actions:ActionsInt,
@@ -78,7 +78,7 @@ class DocumentosFlowImpl(DocumentosFlow):
 
         self.actions.write(self.end_date)
         
-    def documentos(self):
+    def document(self):
         self._click_in_documento()
         self._write_data_inicial()
         self._write_data_final()
@@ -93,14 +93,14 @@ class DocumentosFlowImpl(DocumentosFlow):
         )
 
 
-def getDocumentosFlowImpl(
+def getDocumentFlowImpl(
     actions:ActionsInt,
     path_to_documento:str,
     path_to_data_inicial_label:str,
     path_to_data_final_label:str,
     path_to_search:str,
-) -> DocumentosFlow:
-    return DocumentosFlowImpl(
+) -> DocumentFlow:
+    return DocumentFlowImpl(
         actions=actions,
         path_to_documento=path_to_documento,
         path_to_data_inicial_label=path_to_data_inicial_label,

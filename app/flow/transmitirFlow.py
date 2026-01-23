@@ -1,9 +1,10 @@
 from pathlib import Path
-from app.flow.flows import TransmitirFlow
+from app.flow.flows import TransmitFlow
 from app.actions.actionsInt import ActionsInt
 from app.config.exceptions import IMGDoesntExistError
 
-class TransmitirFlowImpl(TransmitirFlow):
+class TransmitFlowImpl(TransmitFlow):
+
     def __init__(
         self,
         actions:ActionsInt,
@@ -30,8 +31,8 @@ class TransmitirFlowImpl(TransmitirFlow):
 def getTransmitirFlowImpl(
     actions:ActionsInt,
     path_to_transmitir:str,
-) -> TransmitirFlow:
-    return TransmitirFlowImpl(
+) -> TransmitFlow:
+    return TransmitFlowImpl(
         actions=actions,
         path_to_transmitir=path_to_transmitir,
     )
