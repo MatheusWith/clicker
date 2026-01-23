@@ -17,7 +17,7 @@ class TransmitFlowImpl(TransmitFlow):
         if not(path_transmitir.exists() and path_transmitir.is_file()):
             raise IMGDoesntExistError(path_to_transmitir)
 
-        self.path_to_transmitir = path_to_transmitir
+        self.path_to_transmitir:str = path_to_transmitir
 
     def transmitir(self):
         transmitir_x, transmitir_y = self.actions.search(

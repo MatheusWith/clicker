@@ -12,14 +12,13 @@ class PaymentPlanFlowImpl(PaymentPlanFlow):
         path_to_search:str,
     ):
         super().__init__(actions)
+        self._enshure_paths_exist([
+            path_to_plano_pagamento,
+            path_to_search
+        ])
+        self.path_to_plano_pagamento:str = path_to_plano_pagamento
+        self.path_to_search:str = path_to_search
 
-        path_plano_pagamento = Path(path_to_plano_pagamento)
-        path_search = Path(path_to_search)
-
-        if not(path_plano_pagamento.exists() and path_plano_pagamento.is_file()):
-            raise IMGDoesntExistError(path_to_plano_pagamento)
-        if not (path_search.exists() and path_search.is_file()):
-            raise IMGDoesntExistError(path_to_search)
 
     def _click_in_plano_pagamento(self):
         plano_pagamento_x,plano_pagamento_y = self.actions.search(

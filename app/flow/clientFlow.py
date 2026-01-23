@@ -12,16 +12,13 @@ class ClientFlowImpl(ClientFlow):
         path_to_search:str,
     ):
         super().__init__(actions)
-        path_client = Path(path_to_client)
-        path_search = Path(path_to_search)
+        self._enshure_paths_exist([
+            path_to_client,
+            path_to_search
+        ])
 
-        if not(path_client.exists() and path_client.is_file()):
-            raise IMGDoesntExistError(path_to_client)
-        if not (path_search.exists() and path_search.is_file()):
-            raise IMGDoesntExistError(path_to_search)
-
-        self.path_to_client = path_to_client
-        self.path_to_search = path_to_search
+        self.path_to_client:str = path_to_client
+        self.path_to_search:str = path_to_search
 
 
     def _click_in_client(self):

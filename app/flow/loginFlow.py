@@ -16,21 +16,18 @@ class LoginFlowImpl(LoginFlow):
         path_to_login:str,
     ):
         super().__init__(actions)
-        self.modify_to_field:int = 20
-        path_username = Path(path_to_username)
-        path_password = Path(path_to_password)
-        path_login = Path(path_to_login)
+
         if settings.LOGIN is None:
             raise LoginSettinsIsNoneError
         if settings.PASSWORD is None:
             raise PasswordSettinsIsNoneError
 
-        if not (path_username.exists() and path_username.is_file()):
-            raise IMGDoesntExistError(path_username)
-        if not (path_password.exists() and path_password.is_file()):
-            raise IMGDoesntExistError(path_password)
-        if not (path_login.exists() and path_login.is_file()):
-            raise IMGDoesntExistError(path_to_login)
+        self.modify_to_field:int = 20
+        self._enshure_paths_exist([
+            path_to_username,
+            path_to_password,
+            path_to_login
+        ])
 
         self.username:str = settings.LOGIN
         self.password:str = settings.PASSWORD
