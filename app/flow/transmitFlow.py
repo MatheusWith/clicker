@@ -24,7 +24,7 @@ class TransmitFlowImpl(TransmitFlow):
             transmitir_y
         )
 
-def getTransmitirFlowImpl(
+def getTransmitFlowImpl(
     actions:ActionsInt,
     path_to_transmitir:str,
 ) -> TransmitFlow:
