@@ -53,7 +53,7 @@ class ProductFlowImpl(ProductFlow):
             check_box_y,
         )
 
-    def product(self):
+    def execute(self):
         self._click_in_product()
         self._check_tabela_prazo()
         self._uncheck_saldo_estoque()
