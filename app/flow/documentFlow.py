@@ -1,7 +1,5 @@
-from pathlib import Path
 from app.flow.flows import DocumentFlow
 from app.actions.actionsInt import ActionsInt
-from app.config.exceptions import IMGDoesntExistError
 from app.config.exceptions import EndDateSettinsIsNoneError, StartDateSettinsIsNoneError
 from app.config.config import settings
 
@@ -15,35 +13,28 @@ class DocumentFlowImpl(DocumentFlow):
         path_to_data_final_label:str,
         path_to_search:str
     ):
-        super().__init__(actions)
-        path_documento = Path(path_to_documento)
-        path_data_inicial_label = Path(path_to_data_final_label)
-        path_data_final_label = Path(path_to_data_final_label)
-        path_search = Path(path_to_search)
-
-        if not (path_documento.exists() and path_documento.is_file()):
-            raise IMGDoesntExistError(path_to_documento)
-        if not (path_data_inicial_label.exists() and path_data_inicial_label.is_file()):
-            raise IMGDoesntExistError(path_to_data_inicial_label)
-        if not (path_data_final_label.exists() and path_data_final_label.is_file()):
-            raise IMGDoesntExistError(path_to_data_final_label)
-        if not (path_search.exists() and path_search.is_file()):
-            raise IMGDoesntExistError(path_to_search)
-
-        self.path_to_documento:str = path_to_documento
-        self.path_to_data_inicial_label:str = path_to_data_inicial_label
-        self.path_to_data_final_label:str = path_to_data_final_label
-        self.path_to_search:str = path_to_search
-
         if settings.START_DATE is None:
             raise StartDateSettinsIsNoneError
         if settings.END_DATE is None:
             raise EndDateSettinsIsNoneError
 
-        self.start_date = settings.START_DATE
-        self.end_date = settings.END_DATE
+        super().__init__(actions)
+        self._enshure_paths_exist([
+            path_to_documento,
+            path_to_data_inicial_label,
+            path_to_data_final_label,
+            path_to_search
+        ])
 
-    def _click_in_documento(self):
+        self.path_to_documento:str = self.base_path + path_to_documento
+        self.path_to_data_inicial_label:str = self.base_path + path_to_data_inicial_label
+        self.path_to_data_final_label:str = self.base_path + path_to_data_final_label
+        self.path_to_search:str = self.base_path + path_to_search
+
+        self.start_date:str = settings.START_DATE
+        self.end_date:str = settings.END_DATE
+
+    def _click_in_documento(self) -> None:
         doc_x, doc_y = self.actions.search(
             self.path_to_documento
         )
@@ -52,7 +43,7 @@ class DocumentFlowImpl(DocumentFlow):
             doc_y,
         )
 
-    def _write_data_inicial(self):
+    def _write_data_inicial(self) -> None:
         ini_x, ini_y = self.actions.search(
             self.path_to_data_inicial_label
         )
@@ -65,7 +56,7 @@ class DocumentFlowImpl(DocumentFlow):
 
         self.actions.write(self.start_date)
 
-    def _write_data_final(self):
+    def _write_data_final(self) -> None:
         end_x, end_y = self.actions.search(
             self.path_to_data_final_label
         )

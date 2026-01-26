@@ -1,7 +1,5 @@
-from pathlib import Path
 from app.flow.flows import TransmitFlow
 from app.actions.actionsInt import ActionsInt
-from app.config.exceptions import IMGDoesntExistError
 
 class TransmitFlowImpl(TransmitFlow):
 
@@ -11,15 +9,13 @@ class TransmitFlowImpl(TransmitFlow):
         path_to_transmitir:str,
     ):
         super().__init__(actions)
+        self._enshure_paths_exist([
+            path_to_transmitir
+        ])
 
-        path_transmitir = Path(path_to_transmitir)
+        self.path_to_transmitir:str = self.base_path + path_to_transmitir
 
-        if not(path_transmitir.exists() and path_transmitir.is_file()):
-            raise IMGDoesntExistError(path_to_transmitir)
-
-        self.path_to_transmitir = path_to_transmitir
-
-    def transmitir(self):
+    def transmit(self):
         transmitir_x, transmitir_y = self.actions.search(
             self.path_to_transmitir
         )
@@ -28,7 +24,7 @@ class TransmitFlowImpl(TransmitFlow):
             transmitir_y
         )
 
-def getTransmitirFlowImpl(
+def getTransmitFlowImpl(
     actions:ActionsInt,
     path_to_transmitir:str,
 ) -> TransmitFlow:

@@ -1,7 +1,5 @@
-from pathlib import Path
 from app.flow.flows import ProductFlow
 from app.actions.actionsInt import ActionsInt
-from app.config.exceptions import IMGDoesntExistError
 
 
 class ProductFlowImpl(ProductFlow):
@@ -14,34 +12,26 @@ class ProductFlowImpl(ProductFlow):
         path_to_search:str,
     ):
         super().__init__(actions)
+        self._enshure_paths_exist([
+            path_to_produto,
+            path_to_box_table,
+            path_to_box_produto_saldo,
+            path_to_search,
+        ])
 
-        path_produto = Path(path_to_produto)
-        path_box_table = Path(path_to_box_table)
-        path_produto_saldo = Path(path_to_box_produto_saldo)
-        path_search = Path(path_to_search)
+        self.path_to_produto:str = self.base_path + path_to_produto
+        self.path_to_box_table:str = self.base_path + path_to_box_table
+        self.path_to_box_produto_saldo:str = self.base_path + path_to_box_produto_saldo
+        self.path_to_search:str = self.base_path + path_to_search
 
-        if not (path_produto.exists() and path_produto.is_file()):
-            raise IMGDoesntExistError(path_produto)
-        if not (path_box_table.exists() and path_box_table.is_file()):
-            raise IMGDoesntExistError(path_box_table)
-        if not (path_produto_saldo.exists() and path_produto_saldo.is_file()):
-            raise IMGDoesntExistError(path_produto_saldo)
-        if not (path_search.exists() and path_search.is_file()):
-            raise IMGDoesntExistError(path_search)
-
-        self.path_to_produto = path_to_produto
-        self.path_to_box_table = path_to_box_table
-        self.path_to_box_produto_saldo = path_to_box_produto_saldo
-        self.path_to_search = path_to_search
-
-    def _click_in_product(self):
+    def _click_in_product(self) -> None:
         product_x, product_y = self.actions.search(self.path_to_produto)
         self.actions.left_click(
             product_x,
             product_y,
         )
 
-    def _check_tabela_prazo(self):
+    def _check_tabela_prazo(self) -> None:
         check_box_x, check_box_y = self.actions.search(
             self.path_to_box_table
         )
@@ -52,7 +42,7 @@ class ProductFlowImpl(ProductFlow):
             check_box_y,
         )
 
-    def _uncheck_saldo_estoque(self):
+    def _uncheck_saldo_estoque(self) -> None:
         check_box_x, check_box_y = self.actions.search(
             self.path_to_box_produto_saldo,
         )
@@ -73,6 +63,7 @@ class ProductFlowImpl(ProductFlow):
         )
         
         self.actions.left_click(search_x, search_y)
+
 
 def getProductFlowImpl(
     actions:ActionsInt,
