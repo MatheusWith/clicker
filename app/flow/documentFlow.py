@@ -26,10 +26,10 @@ class DocumentFlowImpl(DocumentFlow):
             path_to_search
         ])
 
-        self.path_to_documento:str = path_to_documento
-        self.path_to_data_inicial_label:str = path_to_data_inicial_label
-        self.path_to_data_final_label:str = path_to_data_final_label
-        self.path_to_search:str = path_to_search
+        self.path_to_documento:str = self.base_path + path_to_documento
+        self.path_to_data_inicial_label:str = self.base_path + path_to_data_inicial_label
+        self.path_to_data_final_label:str = self.base_path + path_to_data_final_label
+        self.path_to_search:str = self.base_path + path_to_search
 
         self.start_date:str = settings.START_DATE
         self.end_date:str = settings.END_DATE

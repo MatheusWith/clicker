@@ -9,6 +9,8 @@ class FlowInt(ABC):
         self.actions = actions
 
 class FlowAbs(FlowInt):
+    base_path:str = settings.img_path if settings.img_path else ""
+
     def _enshure_paths_exist(self, paths_to:list[str]) -> None | Exception:
         for pst in paths_to:
             p = Path(settings.img_path + pst)

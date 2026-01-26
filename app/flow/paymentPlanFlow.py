@@ -14,8 +14,8 @@ class PaymentPlanFlowImpl(PaymentPlanFlow):
             path_to_plano_pagamento,
             path_to_search
         ])
-        self.path_to_plano_pagamento:str = path_to_plano_pagamento
-        self.path_to_search:str = path_to_search
+        self.path_to_plano_pagamento:str = self.base_path + path_to_plano_pagamento
+        self.path_to_search:str = self.base_path + path_to_search
 
 
     def _click_in_plano_pagamento(self) -> None:
@@ -36,7 +36,7 @@ class PaymentPlanFlowImpl(PaymentPlanFlow):
         
         self.actions.left_click(search_x, search_y)
 
-def getPlanoPagamentoFlowImpl(
+def getPaymentPlanFlowImpl(
     actions:ActionsInt,
     path_to_plano_pagamento:str,
     path_to_search:str,

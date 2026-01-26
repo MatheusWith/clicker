@@ -15,8 +15,8 @@ class ClientFlowImpl(ClientFlow):
             path_to_search,
         ])
 
-        self.path_to_client:str = path_to_client
-        self.path_to_search:str = path_to_search
+        self.path_to_client:str = self.base_path + path_to_client
+        self.path_to_search:str = self.base_path + path_to_search
 
 
     def _click_in_client(self) -> None:
