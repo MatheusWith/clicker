@@ -1,44 +1,53 @@
 from app.actions.actionsInt import ActionsInt
 from abc import ABC, abstractmethod
+from pathlib import Path
+from app.config.exceptions import IMGDoesntExistError
+from app.config.config import settings
 
-
-class FlowInt:
+class FlowInt(ABC):
     def __init__(self, actions: ActionsInt):
         self.actions = actions
 
+class FlowAbs(FlowInt):
+    def _enshure_paths_exist(self, paths_to:list[str]) -> None | Exception:
+        for pst in paths_to:
+            p = Path(settings.img_path + pst)
+            if not (p.exists() and p.is_file()):
+                raise IMGDoesntExistError(pst)
 
-class LoginFlow(FlowInt,ABC):
+
+class LoginFlow(FlowAbs,ABC):
     @abstractmethod
     def login(self):
         pass
 
-class SellerFlow(FlowInt,ABC):
+class SellerFlow(FlowAbs,ABC):
     @abstractmethod
     def seller(self):
         pass
 
-class ProductFlow(FlowInt,ABC):
+class ProductFlow(FlowAbs,ABC):
     @abstractmethod
     def product(self):
         pass
 
-class ClientFlow(FlowInt,ABC):
+class ClientFlow(FlowAbs,ABC):
     @abstractmethod
     def client(self):
         pass
 
-class PaymentPlanFlow(FlowInt,ABC):
+class PaymentPlanFlow(FlowAbs,ABC):
     @abstractmethod
     def payment_plan(self):
         pass
 
-class DocumentFlow(FlowInt,ABC):
+class DocumentFlow(FlowAbs,ABC):
     @abstractmethod
     def document(self):
         pass
 
 
-class TransmitFlow(FlowInt,ABC):
+class TransmitFlow(FlowAbs,ABC):
     @abstractmethod
     def transmit(self):
         pass

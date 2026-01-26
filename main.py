@@ -13,9 +13,9 @@ def main():
 
     login_flows: LoginFlow = getLoginFlowImpl(
         actions=actions,
-        path_to_username="app/img/login_flow/username_label.png",
-        path_to_password="app/img/login_flow/password_label.png",
-        path_to_login="app/img/login_flow/login_button.png",
+        path_to_username="login_flow/username_label.png",
+        path_to_password="login_flow/password_label.png",
+        path_to_login="login_flow/login_button.png",
     )
 
     login_flows.login()

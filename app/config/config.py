@@ -13,7 +13,8 @@ class DataParameterSettings(BaseSettings):
 
 class PyAutoGUISettings(BaseSettings):
     FAILSAFE: bool = True
-    PAUSE: int = 2.5
+    PAUSE: float = 2.5
+    CONFIDANCE:float = 0.8
 
 
 class EnvironmentOption(str, Enum):
@@ -25,12 +26,16 @@ class EnvironmentOption(str, Enum):
 class EnvironmentSettings(BaseSettings):
     ENVIRONMENT: EnvironmentOption = EnvironmentOption.LOCAL
 
+class IMGBasePathSettings(BaseSettings):
+    img_path:str = "app/img/"
+
 
 class Settings(
     EnvironmentSettings,
     PyAutoGUISettings,
     CredentialsSettings,
     DataParameterSettings,
+    IMGBasePathSettings,
 ):
     model_config = SettingsConfigDict(
         env_file = os.path.join(os.path.dirname(os.path.realpath(__file__)),"..","..",".env"),
