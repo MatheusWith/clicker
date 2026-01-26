@@ -15,7 +15,7 @@ class SellerFlowImpl(SellerFlow):
             path_to_search,
         ])
 
-        self.path_box_vendendor:str = self.base_path + path_to_vendendor
+        self.path_to_vendendor:str = self.base_path + path_to_vendendor
         self.path_to_search:str = self.base_path + path_to_search
 
     def _click_in_seller(self) -> None:
@@ -29,7 +29,7 @@ class SellerFlowImpl(SellerFlow):
         )
     
 
-    def seller(self):
+    def execute(self):
         self._click_in_seller()
 
         search_x, search_y = self.actions.search(self.path_to_search)

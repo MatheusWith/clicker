@@ -8,6 +8,10 @@ class FlowInt(ABC):
     def __init__(self, actions: ActionsInt):
         self.actions = actions
 
+    @abstractmethod
+    def execute(self):
+        pass
+
 class FlowAbs(FlowInt):
     base_path:str = settings.img_path if settings.img_path else ""
 
@@ -19,37 +23,22 @@ class FlowAbs(FlowInt):
 
 
 class LoginFlow(FlowAbs,ABC):
-    @abstractmethod
-    def login(self):
-        pass
+    pass
 
 class SellerFlow(FlowAbs,ABC):
-    @abstractmethod
-    def seller(self):
-        pass
+    pass
 
 class ProductFlow(FlowAbs,ABC):
-    @abstractmethod
-    def product(self):
-        pass
+    pass
 
 class ClientFlow(FlowAbs,ABC):
-    @abstractmethod
-    def client(self):
-        pass
+    pass
 
 class PaymentPlanFlow(FlowAbs,ABC):
-    @abstractmethod
-    def payment_plan(self):
-        pass
+    pass
 
 class DocumentFlow(FlowAbs,ABC):
-    @abstractmethod
-    def document(self):
-        pass
-
+    pass
 
 class TransmitFlow(FlowAbs,ABC):
-    @abstractmethod
-    def transmit(self):
-        pass
+    pass
