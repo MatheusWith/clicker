@@ -24,14 +24,14 @@ class ProductFlowImpl(ProductFlow):
         self.path_to_box_produto_saldo:str = path_to_box_produto_saldo
         self.path_to_search:str = path_to_search
 
-    def _click_in_product(self):
+    def _click_in_product(self) -> None:
         product_x, product_y = self.actions.search(self.path_to_produto)
         self.actions.left_click(
             product_x,
             product_y,
         )
 
-    def _check_tabela_prazo(self):
+    def _check_tabela_prazo(self) -> None:
         check_box_x, check_box_y = self.actions.search(
             self.path_to_box_table
         )
@@ -42,7 +42,7 @@ class ProductFlowImpl(ProductFlow):
             check_box_y,
         )
 
-    def _uncheck_saldo_estoque(self):
+    def _uncheck_saldo_estoque(self) -> None:
         check_box_x, check_box_y = self.actions.search(
             self.path_to_box_produto_saldo,
         )
@@ -63,6 +63,7 @@ class ProductFlowImpl(ProductFlow):
         )
         
         self.actions.left_click(search_x, search_y)
+
 
 def getProductFlowImpl(
     actions:ActionsInt,

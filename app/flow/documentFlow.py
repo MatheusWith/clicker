@@ -1,7 +1,5 @@
-from pathlib import Path
 from app.flow.flows import DocumentFlow
 from app.actions.actionsInt import ActionsInt
-from app.config.exceptions import IMGDoesntExistError
 from app.config.exceptions import EndDateSettinsIsNoneError, StartDateSettinsIsNoneError
 from app.config.config import settings
 
@@ -58,7 +56,7 @@ class DocumentFlowImpl(DocumentFlow):
 
         self.actions.write(self.start_date)
 
-    def _write_data_final(self):
+    def _write_data_final(self) -> None:
         end_x, end_y = self.actions.search(
             self.path_to_data_final_label
         )

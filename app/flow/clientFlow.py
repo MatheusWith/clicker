@@ -1,7 +1,5 @@
-from pathlib import Path
 from app.flow.flows import ClientFlow
 from app.actions.actionsInt import ActionsInt
-from app.config.exceptions import IMGDoesntExistError
 
 
 class ClientFlowImpl(ClientFlow):
@@ -21,11 +19,11 @@ class ClientFlowImpl(ClientFlow):
         self.path_to_search:str = path_to_search
 
 
-    def _click_in_client(self):
+    def _click_in_client(self) -> None:
         client_x, client_y = self.actions.search(
             self.path_to_client
         )
-        self.left_click(
+        self.actions.left_click(
             client_x,
             client_y,
         )
