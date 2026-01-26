@@ -15,7 +15,7 @@ class TransmitFlowImpl(TransmitFlow):
 
         self.path_to_transmitir:str = self.base_path + path_to_transmitir
 
-    def transmit(self):
+    def execute(self):
         transmitir_x, transmitir_y = self.actions.search(
             self.path_to_transmitir
         )

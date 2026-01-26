@@ -28,7 +28,7 @@ class ClientFlowImpl(ClientFlow):
             client_y,
         )
 
-    def client(self):
+    def execute(self):
         self._click_in_client()
         search_x, search_y = self.actions.search(
             self.path_to_search

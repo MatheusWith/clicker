@@ -29,7 +29,7 @@ class SellerFlowImpl(SellerFlow):
         )
     
 
-    def seller(self):
+    def execute(self):
         self._click_in_seller()
 
         search_x, search_y = self.actions.search(self.path_to_search)

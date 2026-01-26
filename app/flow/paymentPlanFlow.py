@@ -27,7 +27,7 @@ class PaymentPlanFlowImpl(PaymentPlanFlow):
             plano_pagamento_y,
         )
 
-    def payment_plan(self):
+    def execute(self):
         self._click_in_plano_pagamento()
 
         search_x, search_y = self.actions.search(

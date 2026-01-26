@@ -73,7 +73,7 @@ class DocumentFlowImpl(DocumentFlow):
 
         self.actions.write(self.end_date)
         
-    def document(self):
+    def execute(self):
         self._click_in_documento()
         self._write_data_inicial()
         self._write_data_final()
