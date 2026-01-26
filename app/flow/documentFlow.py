@@ -47,11 +47,13 @@ class DocumentFlowImpl(DocumentFlow):
         ini_x, ini_y = self.actions.search(
             self.path_to_data_inicial_label
         )
-        modify_to_field:int = 20 
+        modify_to_field_x:int = -20 
+        modify_to_field_y:int = 25
 
         self.actions.left_click(
-            ini_x + modify_to_field,
-            ini_y,
+            ini_x + modify_to_field_x,
+            ini_y + modify_to_field_y,
+            clicks=2,
         )
 
         self.actions.write(self.start_date)
@@ -60,11 +62,13 @@ class DocumentFlowImpl(DocumentFlow):
         end_x, end_y = self.actions.search(
             self.path_to_data_final_label
         )
-        modify_to_field:int = 20
+        modify_to_field_x:int = 50
+        modify_to_field_y:int = 25
 
         self.actions.left_click(
-            end_x+modify_to_field,
-            end_y,
+            end_x+modify_to_field_x,
+            end_y+modify_to_field_y,
+            clicks=2,
         )
 
         self.actions.write(self.end_date)
