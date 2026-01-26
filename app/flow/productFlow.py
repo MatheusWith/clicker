@@ -19,10 +19,10 @@ class ProductFlowImpl(ProductFlow):
             path_to_search,
         ])
 
-        self.path_to_produto:str = path_to_produto
-        self.path_to_box_table:str = path_to_box_table
-        self.path_to_box_produto_saldo:str = path_to_box_produto_saldo
-        self.path_to_search:str = path_to_search
+        self.path_to_produto:str = self.base_path + path_to_produto
+        self.path_to_box_table:str = self.base_path + path_to_box_table
+        self.path_to_box_produto_saldo:str = self.base_path + path_to_box_produto_saldo
+        self.path_to_search:str = self.base_path + path_to_search
 
     def _click_in_product(self) -> None:
         product_x, product_y = self.actions.search(self.path_to_produto)
