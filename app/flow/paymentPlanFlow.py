@@ -1,7 +1,5 @@
-from pathlib import Path
 from app.flow.flows import PaymentPlanFlow
 from app.actions.actionsInt import ActionsInt
-from app.config.exceptions import IMGDoesntExistError
 
 
 class PaymentPlanFlowImpl(PaymentPlanFlow):
@@ -12,16 +10,15 @@ class PaymentPlanFlowImpl(PaymentPlanFlow):
         path_to_search:str,
     ):
         super().__init__(actions)
+        self._enshure_paths_exist([
+            path_to_plano_pagamento,
+            path_to_search
+        ])
+        self.path_to_plano_pagamento:str = path_to_plano_pagamento
+        self.path_to_search:str = path_to_search
 
-        path_plano_pagamento = Path(path_to_plano_pagamento)
-        path_search = Path(path_to_search)
 
-        if not(path_plano_pagamento.exists() and path_plano_pagamento.is_file()):
-            raise IMGDoesntExistError(path_to_plano_pagamento)
-        if not (path_search.exists() and path_search.is_file()):
-            raise IMGDoesntExistError(path_to_search)
-
-    def _click_in_plano_pagamento(self):
+    def _click_in_plano_pagamento(self) -> None:
         plano_pagamento_x,plano_pagamento_y = self.actions.search(
             self.path_to_plano_pagamento
         )
@@ -30,7 +27,7 @@ class PaymentPlanFlowImpl(PaymentPlanFlow):
             plano_pagamento_y,
         )
 
-    def plano_pagamento(self):
+    def payment_plan(self):
         self._click_in_plano_pagamento()
 
         search_x, search_y = self.actions.search(
