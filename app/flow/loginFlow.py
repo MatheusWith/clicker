@@ -52,7 +52,7 @@ class LoginFlowImpl(LoginFlow):
         )
         self.actions.write(self.password)
 
-    def login(self):
+    def execute(self):
         self._do_username()
         self._do_password()
 
