@@ -13,7 +13,7 @@ class TransmitFlowImpl(TransmitFlow):
             path_to_transmitir
         ])
 
-        self.path_to_transmitir:str = path_to_transmitir
+        self.path_to_transmitir:str = self.base_path + path_to_transmitir
 
     def transmit(self):
         transmitir_x, transmitir_y = self.actions.search(
@@ -24,7 +24,7 @@ class TransmitFlowImpl(TransmitFlow):
             transmitir_y
         )
 
-def getTransmitirFlowImpl(
+def getTransmitFlowImpl(
     actions:ActionsInt,
     path_to_transmitir:str,
 ) -> TransmitFlow:

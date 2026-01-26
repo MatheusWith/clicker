@@ -1,5 +1,6 @@
 import os
 from enum import Enum
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -15,6 +16,20 @@ class PyAutoGUISettings(BaseSettings):
     FAILSAFE: bool = True
     PAUSE: float = 2.5
     CONFIDANCE:float = 0.8
+
+    @field_validator("CONFIDANCE")
+    @classmethod
+    def validate_confidance(cls, v:float) -> float:
+        if not 0 <= v <= 1:
+            raise ValueError("CONFIDANCE must be between 0.0 to 1.0")
+        return v
+
+    @field_validator("PAUSE")
+    @classmethod
+    def validate_pause(cls,v:float) -> float:
+        if v < 0:
+            raise ValueError("PAUSE doenst is negative")
+        return v
 
 
 class EnvironmentOption(str, Enum):

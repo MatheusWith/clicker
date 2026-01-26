@@ -29,9 +29,9 @@ class LoginFlowImpl(LoginFlow):
 
         self.username:str = settings.LOGIN
         self.password:str = settings.PASSWORD
-        self.path_to_username:str = path_to_username
-        self.path_to_password:str = path_to_password
-        self.path_to_login:str = path_to_login
+        self.path_to_username:str = self.base_path + path_to_username
+        self.path_to_password:str = self.base_path + path_to_password
+        self.path_to_login:str = self.base_path + path_to_login
 
     def _do_username(self) -> None:
         username_label_x, username_label_y = self.actions.search(self.path_to_username)

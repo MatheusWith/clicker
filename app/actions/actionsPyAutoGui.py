@@ -5,7 +5,7 @@ from app.config.config import settings
 
 class ActionPyAutoGUIImpl(ActionsInt):
     def search(self,path_to_img:str):
-        return pyautogui.locateCenterOnScreen(path_to_img,confidence=settings.confidance)
+        return pyautogui.locateCenterOnScreen(path_to_img,confidence=settings.CONFIDANCE)
 
     def left_click(self, x:int,y:int, clicks:int = 1):
         pyautogui.click(x=x,y=y,button="left",clicks=clicks)
