@@ -25,20 +25,30 @@ class FlowAbs(FlowInt):
 class LoginFlow(FlowAbs,ABC):
     pass
 
+
 class SellerFlow(FlowAbs,ABC):
     pass
+
 
 class ProductFlow(FlowAbs,ABC):
     pass
 
+
 class ClientFlow(FlowAbs,ABC):
     pass
+
 
 class PaymentPlanFlow(FlowAbs,ABC):
     pass
 
+
 class DocumentFlow(FlowAbs,ABC):
     pass
 
+
 class TransmitFlow(FlowAbs,ABC):
+    pass
+
+
+class FinishFlow(FlowAbs,ABC):
     pass
