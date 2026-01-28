@@ -4,6 +4,7 @@ from app.actions.actionsInt import ActionsInt
 from app.flow.flows import FlowInt
 from app.actions.actionsPyAutoGui import getActionPyAutoGUIImpl
 from app.flow.flows import (
+    OpenFlow,
     LoginFlow, 
     SellerFlow,
     ProductFlow,
@@ -21,6 +22,7 @@ from app.flow.paymentPlanFlow import getPaymentPlanFlowImpl
 from app.flow.documentFlow import getDocumentFlowImpl
 from app.flow.transmitFlow import getTransmitFlowImpl
 from app.flow.finishFlow import getFinishFlowImpl
+from app.flow.openFlow import getOpenFlowImpl
 import time
 
 
@@ -29,6 +31,10 @@ def main():
 
     actions:ActionsInt = getActionPyAutoGUIImpl()
 
+    open_flow: OpenFlow = getOpenFlowImpl(
+        actions=actions,
+        path_to_app_label="open_flow/app_label.png"
+    )
     login_flow: LoginFlow = getLoginFlowImpl(
         actions=actions,
         path_to_username="login_flow/username_label.png",
@@ -76,6 +82,7 @@ def main():
     )
 
     flows: list[FlowInt] = [
+        open_flow,
         login_flow,
         seller_flow,
         product_flow,
