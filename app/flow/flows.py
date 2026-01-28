@@ -22,6 +22,10 @@ class FlowAbs(FlowInt):
                 raise IMGDoesntExistError(pst)
 
 
+class OpenFlow(FlowAbs,ABC):
+    pass
+
+
 class LoginFlow(FlowAbs,ABC):
     pass
 
