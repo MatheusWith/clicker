@@ -46,7 +46,6 @@ class ProductFlowImpl(ProductFlow):
         check_box_x, check_box_y = self.actions.search(
             self.path_to_box_produto_saldo,
         )
-        modify_to_check: int = 20
 
         self.actions.left_click(
             check_box_x,

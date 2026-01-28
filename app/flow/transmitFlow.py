@@ -21,7 +21,7 @@ class TransmitFlowImpl(TransmitFlow):
         )
         self.actions.left_click(
             transmitir_x,
-            transmitir_y
+            transmitir_y,
         )
 
 def getTransmitFlowImpl(
