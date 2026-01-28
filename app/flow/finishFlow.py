@@ -15,7 +15,7 @@ class FinishFlowImpl(FinishFlow):
             path_to_finish_label,
             path_to_ok_button,
         ])
-        self.path_to_yes_confirmation = self.base_path + self.path_to_yes_confirmation
+        self.path_to_yes_confirmation = self.base_path + path_to_yes_confirmation
         self.path_to_finish_label:str = self.base_path + path_to_finish_label
         self.path_to_ok_button:str = self.base_path + path_to_ok_button
 
