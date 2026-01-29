@@ -1,3 +1,4 @@
+import time
 from app.config.setup import configure
 from app.config.config import settings
 from app.actions.actionsInt import ActionsInt
@@ -23,7 +24,6 @@ from app.flow.documentFlow import getDocumentFlowImpl
 from app.flow.transmitFlow import getTransmitFlowImpl
 from app.flow.finishFlow import getFinishFlowImpl
 from app.flow.openFlow import getOpenFlowImpl
-import time
 
 
 def main():
