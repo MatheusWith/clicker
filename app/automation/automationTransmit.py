@@ -80,5 +80,5 @@ class TransmitAutomationImpl(AutomationInt):
                 time.sleep(10)
 
 
-def getTransmitAutomateImpl() -> TransmitAutomationImpl:
+def getTransmitAutomationImpl() -> TransmitAutomationImpl:
     return TransmitAutomationImpl()
