@@ -13,6 +13,7 @@ class DocumentFlowImpl(DocumentFlow):
         path_to_data_final_label:str,
         path_to_search:str,
         path_to_document_type_label:str,
+        path_to_boleto:str
     ):
         if settings.START_DATE is None:
             raise StartDateSettinsIsNoneError
@@ -26,6 +27,7 @@ class DocumentFlowImpl(DocumentFlow):
             path_to_data_final_label,
             path_to_search,
             path_to_document_type_label,
+            path_to_boleto,
         ])
 
         self.path_to_documento:str = self.base_path + path_to_documento
@@ -33,6 +35,7 @@ class DocumentFlowImpl(DocumentFlow):
         self.path_to_data_final_label:str = self.base_path + path_to_data_final_label
         self.path_to_search:str = self.base_path + path_to_search
         self.path_to_document_type_label:str = self.base_path + path_to_document_type_label
+        self.path_to_boleto:str = self.base_path + path_to_boleto
 
         self.start_date:str = settings.START_DATE
         self.end_date:str = settings.END_DATE
@@ -41,7 +44,7 @@ class DocumentFlowImpl(DocumentFlow):
         doc_type_label_x, doc_type_label_y = self.actions.search(
             self.path_to_document_type_label
         )
-        modify_to_field_x:int = -20 
+        modify_to_field_x:int = 55
         modify_to_field_y:int = 25
         self.actions.left_click(
             doc_type_label_x + modify_to_field_x,
@@ -49,7 +52,14 @@ class DocumentFlowImpl(DocumentFlow):
         )
 
     def _select_doc_type(self) -> None: 
-        pass
+        boleto_x, boleto_y = self.actions.search(
+            self.path_to_boleto
+        )
+        self.actions.left_click(
+            boleto_x,
+            boleto_y,
+            clicks=2,
+        )
 
     def _click_in_documento(self) -> None:
         doc_x, doc_y = self.actions.search(
