@@ -123,7 +123,8 @@ def getDocumentFlowImpl(
     path_to_data_inicial_label:str,
     path_to_data_final_label:str,
     path_to_search:str,
-    path_to_document_type_label:str
+    path_to_document_type_label:str,
+    path_to_boleto:str,
 ) -> DocumentFlow:
     return DocumentFlowImpl(
         actions=actions,
@@ -132,6 +133,7 @@ def getDocumentFlowImpl(
         path_to_data_final_label=path_to_data_final_label,
         path_to_search=path_to_search,
         path_to_document_type_label=path_to_document_type_label,
+        path_to_boleto=path_to_boleto,
     )
 
 
