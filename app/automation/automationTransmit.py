@@ -59,6 +59,7 @@ class TransmitAutomationImpl(AutomationInt):
                 path_to_data_final_label="document_flow/inital_date_label.png",
                 path_to_search="search_button.png",
                 path_to_document_type_label="document_flow/document_type_label.png",
+                path_to_boleto="document_flow/boleto.png",
             ),
             getTransmitFlowImpl(
                 actions=self.actions,
