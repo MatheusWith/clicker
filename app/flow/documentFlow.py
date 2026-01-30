@@ -11,7 +11,8 @@ class DocumentFlowImpl(DocumentFlow):
         path_to_documento:str,
         path_to_data_inicial_label:str,
         path_to_data_final_label:str,
-        path_to_search:str
+        path_to_search:str,
+        path_to_document_type_label:str,
     ):
         if settings.START_DATE is None:
             raise StartDateSettinsIsNoneError
@@ -23,16 +24,32 @@ class DocumentFlowImpl(DocumentFlow):
             path_to_documento,
             path_to_data_inicial_label,
             path_to_data_final_label,
-            path_to_search
+            path_to_search,
+            path_to_document_type_label,
         ])
 
         self.path_to_documento:str = self.base_path + path_to_documento
         self.path_to_data_inicial_label:str = self.base_path + path_to_data_inicial_label
         self.path_to_data_final_label:str = self.base_path + path_to_data_final_label
         self.path_to_search:str = self.base_path + path_to_search
+        self.path_to_document_type_label:str = self.base_path + path_to_document_type_label
 
         self.start_date:str = settings.START_DATE
         self.end_date:str = settings.END_DATE
+
+    def _open_doc_type(self) -> None:
+        doc_type_label_x, doc_type_label_y = self.actions.search(
+            self.path_to_document_type_label
+        )
+        modify_to_field_x:int = -20 
+        modify_to_field_y:int = 25
+        self.actions.left_click(
+            doc_type_label_x + modify_to_field_x,
+            doc_type_label_y + modify_to_field_y,
+        )
+
+    def _select_doc_type(self) -> None: 
+        pass
 
     def _click_in_documento(self) -> None:
         doc_x, doc_y = self.actions.search(
@@ -77,6 +94,8 @@ class DocumentFlowImpl(DocumentFlow):
         self._click_in_documento()
         self._write_data_inicial()
         self._write_data_final()
+        self._open_doc_type()
+        self._select_doc_type()
 
         search_x,search_y = self.actions.search(
             self.path_to_search
@@ -94,6 +113,7 @@ def getDocumentFlowImpl(
     path_to_data_inicial_label:str,
     path_to_data_final_label:str,
     path_to_search:str,
+    path_to_document_type_label:str
 ) -> DocumentFlow:
     return DocumentFlowImpl(
         actions=actions,
@@ -101,6 +121,7 @@ def getDocumentFlowImpl(
         path_to_data_inicial_label=path_to_data_inicial_label,
         path_to_data_final_label=path_to_data_final_label,
         path_to_search=path_to_search,
+        path_to_document_type_label=path_to_document_type_label,
     )
 
 
