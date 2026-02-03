@@ -18,3 +18,7 @@ class ActionsInt(ABC):
     @abstractmethod
     def write(self, text: str,interval = 0.3) -> None:
         pass
+
+    @abstractmethod
+    def hot_key(self,*keys) -> None:
+        pass
