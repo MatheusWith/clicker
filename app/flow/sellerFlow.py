@@ -32,19 +32,16 @@ class SellerFlowImpl(SellerFlow):
     def execute(self):
         self._click_in_seller()
 
-        search_x, search_y = self.actions.search(self.path_to_search)
-        self.actions.left_click(
-            search_x,
-            search_y,
+        self.actions.hot_key(
+            'alt',
+            'p',
         )
 
 def getSellerFlowImpl(
     actions:ActionsInt,
     path_to_vendendor:str,
-    path_to_search:str,
 ) -> SellerFlow:
     return SellerFlowImpl(
         actions=actions,
         path_to_vendendor=path_to_vendendor,
-        path_to_search=path_to_search,
     )

@@ -33,31 +33,26 @@ class TransmitAutomationImpl(AutomationInt):
             getSellerFlowImpl(
                 actions=self.actions,
                 path_to_vendendor="vendendor_flow/vendendor_label.png",
-                path_to_search="search_button.png",
             ),
             getProductFlowImpl(
                 actions=self.actions,
                 path_to_produto="product_flow/product_label.png",
                 path_to_box_produto_saldo="product_flow/product_saldo.png",
                 path_to_box_table="product_flow/deadline_table.png",
-                path_to_search="search_button.png",
             ),
             getClientFlowImpl(
                 actions=self.actions,
                 path_to_client="client_flow/client_label.png",
-                path_to_search="search_button.png",
             ),
             getPaymentPlanFlowImpl(
                 actions=self.actions,
                 path_to_plano_pagamento="plano_pagamento_flow/plano_pagamento_label.png",
-                path_to_search="search_button.png",
             ),
             getDocumentFlowImpl(
                 actions=self.actions,
                 path_to_documento="document_flow/document_label.png",
                 path_to_data_inicial_label="document_flow/inital_date_label.png",
                 path_to_data_final_label="document_flow/inital_date_label.png",
-                path_to_search="search_button.png",
                 path_to_document_type_label="document_flow/document_type_label.png",
                 path_to_boleto="document_flow/boleto.png",
             ),
