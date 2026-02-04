@@ -7,15 +7,12 @@ class PaymentPlanFlowImpl(PaymentPlanFlow):
         self,
         actions:ActionsInt,
         path_to_plano_pagamento:str,
-        path_to_search:str,
     ):
         super().__init__(actions)
         self._enshure_paths_exist([
             path_to_plano_pagamento,
-            path_to_search
         ])
         self.path_to_plano_pagamento:str = self.base_path + path_to_plano_pagamento
-        self.path_to_search:str = self.base_path + path_to_search
 
 
     def _click_in_plano_pagamento(self) -> None:
@@ -30,19 +27,17 @@ class PaymentPlanFlowImpl(PaymentPlanFlow):
     def execute(self):
         self._click_in_plano_pagamento()
 
-        search_x, search_y = self.actions.search(
-            self.path_to_search
+        self.actions.hot_key(
+            'alt',
+            'p',
         )
-        
-        self.actions.left_click(search_x, search_y)
+
 
 def getPaymentPlanFlowImpl(
     actions:ActionsInt,
     path_to_plano_pagamento:str,
-    path_to_search:str,
 ) -> PaymentPlanFlow:
     return PaymentPlanFlowImpl(
         actions=actions,
         path_to_plano_pagamento=path_to_plano_pagamento,
-        path_to_search=path_to_search,
     )

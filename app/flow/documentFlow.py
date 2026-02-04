@@ -11,7 +11,6 @@ class DocumentFlowImpl(DocumentFlow):
         path_to_documento:str,
         path_to_data_inicial_label:str,
         path_to_data_final_label:str,
-        path_to_search:str,
         path_to_document_type_label:str,
         path_to_boleto:str
     ):
@@ -25,7 +24,6 @@ class DocumentFlowImpl(DocumentFlow):
             path_to_documento,
             path_to_data_inicial_label,
             path_to_data_final_label,
-            path_to_search,
             path_to_document_type_label,
             path_to_boleto,
         ])
@@ -33,7 +31,6 @@ class DocumentFlowImpl(DocumentFlow):
         self.path_to_documento:str = self.base_path + path_to_documento
         self.path_to_data_inicial_label:str = self.base_path + path_to_data_inicial_label
         self.path_to_data_final_label:str = self.base_path + path_to_data_final_label
-        self.path_to_search:str = self.base_path + path_to_search
         self.path_to_document_type_label:str = self.base_path + path_to_document_type_label
         self.path_to_boleto:str = self.base_path + path_to_boleto
 
@@ -107,13 +104,9 @@ class DocumentFlowImpl(DocumentFlow):
         self._open_doc_type()
         self._select_doc_type()
 
-        search_x,search_y = self.actions.search(
-            self.path_to_search
-        )
-
         self.actions.left_click(
-            search_x,
-            search_y,
+            'alt',
+            'p',
         )
 
 
@@ -122,7 +115,6 @@ def getDocumentFlowImpl(
     path_to_documento:str,
     path_to_data_inicial_label:str,
     path_to_data_final_label:str,
-    path_to_search:str,
     path_to_document_type_label:str,
     path_to_boleto:str,
 ) -> DocumentFlow:
@@ -131,7 +123,6 @@ def getDocumentFlowImpl(
         path_to_documento=path_to_documento,
         path_to_data_inicial_label=path_to_data_inicial_label,
         path_to_data_final_label=path_to_data_final_label,
-        path_to_search=path_to_search,
         path_to_document_type_label=path_to_document_type_label,
         path_to_boleto=path_to_boleto,
     )
