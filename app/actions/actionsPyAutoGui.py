@@ -17,7 +17,7 @@ class ActionPyAutoGUIImpl(ActionsInt):
         pyautogui.typewrite(text,interval=0.3)
 
     def hot_key(self,*keys):
-        pyautogui.hot_key(*keys)
+        pyautogui.hotkey(*keys)
 
 
 def getActionPyAutoGUIImpl() -> ActionsInt:
