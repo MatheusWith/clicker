@@ -76,7 +76,8 @@ class TransmitAutomationImpl(AutomationInt):
                 path_to_produto="product_flow/product_label.png",
                 path_to_box_produto_saldo="product_flow/product_saldo.png",
                 path_to_box_table="product_flow/deadline_table.png",
-                modify_to_check=settings.MTF_PRODUCT
+                modify_to_check_stock_balance=settings.MTF_PRODUCT_STOCK_BALANCE,
+                modify_to_check_deadtable=settings.MTF_PRODUCT_DEADTABLE,
             ),
             getClientFlowImpl(
                 actions=self.actions,

@@ -17,7 +17,8 @@ class ToFieldSettings(BaseSettings):
 
     MTF_LOGIN:int = 8
 
-    MTF_PRODUCT:int = 8
+    MTF_PRODUCT_STOCK_BALANCE:int = -8
+    MTF_PRODUCT_DEADTABLE:int = -100
 
     MTF_DOCUMENT_OPEN_DOC_X:int = 55
     MTF_DOCUMENT_OPEN_DOC_Y:int = 25
