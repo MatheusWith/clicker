@@ -33,8 +33,9 @@ class TransmitAutomationImpl(AutomationInt):
             raise EndDateSettinsIsNoneError
 
         if settings.MTF_LOGIN:
-            print("nao tem o modificador ate o campo")
-
+            raise ValueError("nao tem o modificador ate o campo")
+        if settings.MTF_SELLER:
+            raise ValueError("Nao tem o modificador seller")
 
         self.actions:ActionsInt = getActionPyAutoGUIImpl()
 

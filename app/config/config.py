@@ -15,7 +15,7 @@ class DataParameterSettings(BaseSettings):
 class ToFieldSettings(BaseSettings):
     MTF_SELLER:int
     MTF_LOGIN:int
-
+    
 class PyAutoGUISettings(BaseSettings):
     FAILSAFE: bool = True
     PAUSE: float = 2.5
