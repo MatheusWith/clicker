@@ -63,6 +63,7 @@ class TransmitAutomationImpl(AutomationInt):
                 path_to_produto="product_flow/product_label.png",
                 path_to_box_produto_saldo="product_flow/product_saldo.png",
                 path_to_box_table="product_flow/deadline_table.png",
+                modify_to_check=settings.MTF_PRODUCT
             ),
             getClientFlowImpl(
                 actions=self.actions,

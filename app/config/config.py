@@ -15,6 +15,7 @@ class DataParameterSettings(BaseSettings):
 class ToFieldSettings(BaseSettings):
     MTF_SELLER:int
     MTF_LOGIN:int
+    MTF_PRODUCT:int
     
 class PyAutoGUISettings(BaseSettings):
     FAILSAFE: bool = True
