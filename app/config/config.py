@@ -13,8 +13,18 @@ class DataParameterSettings(BaseSettings):
     END_DATE:str
 
 class ToFieldSettings(BaseSettings):
-    MTF_SELLER:int
-    MTF_LOGIN:int
+    MTF_SELLER:int = 8
+
+    MTF_LOGIN:int = 8
+
+    MTF_PRODUCT:int = 8
+
+    MTF_DOCUMENT_OPEN_DOC_X:int = 55
+    MTF_DOCUMENT_OPEN_DOC_Y:int = 25
+    MTF_DOCUMENT_DATE_INIT_X:int = -20
+    MTF_DOCUMENT_DATE_INIT_Y:int = 25
+    MTF_DOCUMENT_DATE_END_X:int = 50
+    MTF_DOCUMENT_DATE_END_Y:int = 25
     
 class PyAutoGUISettings(BaseSettings):
     FAILSAFE: bool = True

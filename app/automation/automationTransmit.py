@@ -33,9 +33,22 @@ class TransmitAutomationImpl(AutomationInt):
             raise EndDateSettinsIsNoneError
 
         if settings.MTF_LOGIN:
-            raise ValueError("nao tem o modificador ate o campo")
+            raise ValueError("Nao ha o modificador ate o campo")
         if settings.MTF_SELLER:
-            raise ValueError("Nao tem o modificador seller")
+            raise ValueError("Nao ha o modificador seller")
+        if settings.MTF_DOCUMENT_OPEN_DOC_X:
+            raise ValueError("Nao ha o modificador docment")
+        if settings.MTF_DOCUMENT_OPEN_DOC_Y:
+            raise ValueError("Nao ha o modificador docment")
+        if settings.MTF_DOCUMENT_DATE_INIT_X:
+            raise ValueError("Nao ha o modificador docment")
+        if settings.MTF_DOCUMENT_DATE_INIT_Y:
+            raise ValueError("Nao ha o modificador docment")
+        if settings.MTF_DOCUMENT_DATE_END_X:
+            raise ValueError("Nao ha o modificador docment")
+        if settings.MTF_DOCUMENT_DATE_END_Y:
+            raise ValueError("Nao ha o modificador docment")
+
 
         self.actions:ActionsInt = getActionPyAutoGUIImpl()
 
@@ -63,6 +76,7 @@ class TransmitAutomationImpl(AutomationInt):
                 path_to_produto="product_flow/product_label.png",
                 path_to_box_produto_saldo="product_flow/product_saldo.png",
                 path_to_box_table="product_flow/deadline_table.png",
+                modify_to_check=settings.MTF_PRODUCT
             ),
             getClientFlowImpl(
                 actions=self.actions,
@@ -79,6 +93,12 @@ class TransmitAutomationImpl(AutomationInt):
                 path_to_data_final_label="document_flow/inital_date_label.png",
                 path_to_document_type_label="document_flow/document_type_label.png",
                 path_to_boleto="document_flow/boleto.png",
+                modify_to_field_open_doc_x=settings.MTF_DOCUMENT_OPEN_DOC_X,
+                modify_to_field_open_doc_y=settings.MTF_DOCUMENT_OPEN_DOC_Y,
+                modify_to_field_date_init_x=settings.MTF_DOCUMENT_DATE_INIT_X,
+                modify_to_field_date_init_y=settings.MTF_DOCUMENT_DATE_INIT_Y,
+                modify_to_field_date_end_x=settings.MTF_DOCUMENT_DATE_END_X,
+                modify_to_field_date_end_y=settings.MTF_DOCUMENT_DATE_END_Y,
             ),
             getTransmitFlowImpl(
                 actions=self.actions,
