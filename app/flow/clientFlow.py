@@ -27,7 +27,7 @@ class ClientFlowImpl(ClientFlow):
 
     def execute(self):
         self._click_in_client()
-        self.actions.left_click(
+        self.actions.hot_key(
             'alt',
             'p',
         )
