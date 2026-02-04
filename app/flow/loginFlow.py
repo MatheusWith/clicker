@@ -1,8 +1,5 @@
 from app.flow.flows import LoginFlow
 from app.actions.actionsInt import ActionsInt
-from app.config.config import settings
-from app.config.exceptions import LoginSettinsIsNoneError
-from app.config.exceptions import PasswordSettinsIsNoneError
 
 
 
@@ -12,24 +9,20 @@ class LoginFlowImpl(LoginFlow):
         path_to_username:str, 
         path_to_password:str, 
         path_to_login:str,
+        username:str,
+        password:str,
+        modify_to_field:int,
     ):
         super().__init__(actions)
 
-        if settings.LOGIN is None:
-            raise LoginSettinsIsNoneError
-        if settings.PASSWORD is None:
-            raise PasswordSettinsIsNoneError
-
-        self.modify_to_field:int = 20
+        self.username:str = username
+        self.password:str = password
+        self.modify_to_field:int = modify_to_field
         self._enshure_paths_exist([
             path_to_username,
             path_to_password,
             path_to_login
         ])
-
-        self.username:str = settings.LOGIN
-        self.password:str = settings.PASSWORD
-        self.path_to_username:str = self.base_path + path_to_username
         self.path_to_password:str = self.base_path + path_to_password
         self.path_to_login:str = self.base_path + path_to_login
 
@@ -44,7 +37,6 @@ class LoginFlowImpl(LoginFlow):
 
     def _do_password(self) -> None:
         password_label_x,password_label_y = self.actions.search(self.path_to_password)
-        # o valor ideal para o mouse descer ate o campo digitavel
 
         self.actions.left_click(
             password_label_x,
@@ -67,11 +59,16 @@ def getLoginFlowImpl(
     path_to_username:str,
     path_to_password:str,
     path_to_login:str,
-
+    username:str,
+    password:str,
+    modify_to_field:int,
 ) -> LoginFlow:
     return LoginFlowImpl(
         actions=actions,
         path_to_username=path_to_username,
         path_to_password=path_to_password,
         path_to_login=path_to_login,
+        username=username,
+        password=password,
+        modify_to_field=modify_to_field,
     )
