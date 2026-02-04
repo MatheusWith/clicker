@@ -1,6 +1,5 @@
 from app.flow.flows import DocumentFlow
 from app.actions.actionsInt import ActionsInt
-from app.config.exceptions import EndDateSettinsIsNoneError, StartDateSettinsIsNoneError
 from app.config.config import settings
 
 
@@ -12,12 +11,10 @@ class DocumentFlowImpl(DocumentFlow):
         path_to_data_inicial_label:str,
         path_to_data_final_label:str,
         path_to_document_type_label:str,
-        path_to_boleto:str
+        path_to_boleto:str,
+        start_date:str,
+        end_date:str,
     ):
-        if settings.START_DATE is None:
-            raise StartDateSettinsIsNoneError
-        if settings.END_DATE is None:
-            raise EndDateSettinsIsNoneError
 
         super().__init__(actions)
         self._enshure_paths_exist([
@@ -34,8 +31,8 @@ class DocumentFlowImpl(DocumentFlow):
         self.path_to_document_type_label:str = self.base_path + path_to_document_type_label
         self.path_to_boleto:str = self.base_path + path_to_boleto
 
-        self.start_date:str = settings.START_DATE
-        self.end_date:str = settings.END_DATE
+        self.start_date:str = start_date
+        self.end_date:str = end_date
 
     def _open_doc_type(self) -> None:
         doc_type_label_x, doc_type_label_y = self.actions.search(

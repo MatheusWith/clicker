@@ -12,6 +12,10 @@ class DataParameterSettings(BaseSettings):
     START_DATE:str
     END_DATE:str
 
+class ToFieldSettings(BaseSettings):
+    MTF_SELLER:int
+    MTF_LOGIN:int
+    
 class PyAutoGUISettings(BaseSettings):
     FAILSAFE: bool = True
     PAUSE: float = 2.5
@@ -51,6 +55,7 @@ class Settings(
     CredentialsSettings,
     DataParameterSettings,
     IMGBasePathSettings,
+    ToFieldSettings,
 ):
     model_config = SettingsConfigDict(
         env_file = os.path.join(os.path.dirname(os.path.realpath(__file__)),"..","..",".env"),

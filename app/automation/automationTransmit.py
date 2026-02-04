@@ -13,10 +13,30 @@ from app.flow.transmitFlow import getTransmitFlowImpl
 from app.flow.finishFlow import getFinishFlowImpl
 from app.flow.openFlow import getOpenFlowImpl
 from app.actions.actionsPyAutoGui import getActionPyAutoGUIImpl
+from app.config.config import settings
+from app.config.exceptions import LoginSettinsIsNoneError
+from app.config.exceptions import PasswordSettinsIsNoneError
+from app.config.exceptions import EndDateSettinsIsNoneError, StartDateSettinsIsNoneError
+
 
 
 class TransmitAutomationImpl(AutomationInt):
     def __init__(self):
+        if settings.LOGIN is None:
+            raise LoginSettinsIsNoneError
+        if settings.PASSWORD is None:
+            raise PasswordSettinsIsNoneError
+
+        if settings.START_DATE is None:
+            raise StartDateSettinsIsNoneError
+        if settings.END_DATE is None:
+            raise EndDateSettinsIsNoneError
+
+        if settings.MTF_LOGIN:
+            raise ValueError("nao tem o modificador ate o campo")
+        if settings.MTF_SELLER:
+            raise ValueError("Nao tem o modificador seller")
+
         self.actions:ActionsInt = getActionPyAutoGUIImpl()
 
         self.flows: list[FlowInt] = [
@@ -29,10 +49,14 @@ class TransmitAutomationImpl(AutomationInt):
                 path_to_username="login_flow/username_label.png",
                 path_to_password="login_flow/password_label.png",
                 path_to_login="login_flow/login_button.png",
+                username=settings.LOGIN,
+                password=settings.PASSWORD,
+                modify_to_field=settings.MTF_LOGIN,
             ),
             getSellerFlowImpl(
                 actions=self.actions,
                 path_to_vendendor="vendendor_flow/vendendor_label.png",
+                modify_to_check=settings.MTF_SELLER,
             ),
             getProductFlowImpl(
                 actions=self.actions,
