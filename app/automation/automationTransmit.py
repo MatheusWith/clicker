@@ -32,21 +32,21 @@ class TransmitAutomationImpl(AutomationInt):
         if settings.END_DATE is None:
             raise EndDateSettinsIsNoneError
 
-        if settings.MTF_LOGIN:
+        if settings.MTF_LOGIN is None:
             raise ValueError("Nao ha o modificador ate o campo")
-        if settings.MTF_SELLER:
+        if settings.MTF_SELLER is None:
             raise ValueError("Nao ha o modificador seller")
-        if settings.MTF_DOCUMENT_OPEN_DOC_X:
+        if settings.MTF_DOCUMENT_OPEN_DOC_X is None:
             raise ValueError("Nao ha o modificador docment")
-        if settings.MTF_DOCUMENT_OPEN_DOC_Y:
+        if settings.MTF_DOCUMENT_OPEN_DOC_Y is None:
             raise ValueError("Nao ha o modificador docment")
-        if settings.MTF_DOCUMENT_DATE_INIT_X:
+        if settings.MTF_DOCUMENT_DATE_INIT_X is None:
             raise ValueError("Nao ha o modificador docment")
-        if settings.MTF_DOCUMENT_DATE_INIT_Y:
+        if settings.MTF_DOCUMENT_DATE_INIT_Y is None:
             raise ValueError("Nao ha o modificador docment")
-        if settings.MTF_DOCUMENT_DATE_END_X:
+        if settings.MTF_DOCUMENT_DATE_END_X is None:
             raise ValueError("Nao ha o modificador docment")
-        if settings.MTF_DOCUMENT_DATE_END_Y:
+        if settings.MTF_DOCUMENT_DATE_END_Y is None:
             raise ValueError("Nao ha o modificador docment")
 
 
