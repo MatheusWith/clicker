@@ -93,6 +93,8 @@ class TransmitAutomationImpl(AutomationInt):
                 path_to_data_final_label="document_flow/inital_date_label.png",
                 path_to_document_type_label="document_flow/document_type_label.png",
                 path_to_boleto="document_flow/boleto.png",
+                start_date=settings.START_DATE,
+                end_date=settings.END_DATE,
                 modify_to_field_open_doc_x=settings.MTF_DOCUMENT_OPEN_DOC_X,
                 modify_to_field_open_doc_y=settings.MTF_DOCUMENT_OPEN_DOC_Y,
                 modify_to_field_date_init_x=settings.MTF_DOCUMENT_DATE_INIT_X,
