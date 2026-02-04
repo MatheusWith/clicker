@@ -9,7 +9,8 @@ class ProductFlowImpl(ProductFlow):
         path_to_produto:str,
         path_to_box_table:str,
         path_to_box_produto_saldo:str,
-        modify_to_check:int,
+        modify_to_check_deadtable:int,
+        modify_to_check_stock_balance:int,
     ):
         super().__init__(actions)
         self._enshure_paths_exist([
@@ -18,7 +19,8 @@ class ProductFlowImpl(ProductFlow):
             path_to_box_produto_saldo,
         ])
 
-        self.modify_to_check: int = modify_to_check
+        self.modify_to_check_deadtable:int = modify_to_check_deadtable
+        self.modify_to_check_stock_balance:int = modify_to_check_stock_balance
         self.path_to_produto:str = self.base_path + path_to_produto
         self.path_to_box_table:str = self.base_path + path_to_box_table
         self.path_to_box_produto_saldo:str = self.base_path + path_to_box_produto_saldo
@@ -36,7 +38,7 @@ class ProductFlowImpl(ProductFlow):
         )
         
         self.actions.left_click(
-            check_box_x+self.modify_to_check,
+            check_box_x+self.modify_to_check_deadtable,
             check_box_y,
         )
 
@@ -47,7 +49,7 @@ class ProductFlowImpl(ProductFlow):
 
         self.actions.left_click(
             check_box_x,
-            check_box_y,
+            check_box_y-self.modify_to_check_stock_balance,
         )
 
     def execute(self):
@@ -64,12 +66,14 @@ def getProductFlowImpl(
     path_to_produto:str,
     path_to_box_table:str,
     path_to_box_produto_saldo:str,
-    modify_to_check:int,
+    modify_to_check_stock_balance:int,
+    modify_to_check_deadtable=int,
 ) -> ProductFlow:
     return ProductFlowImpl(
         actions=actions,
         path_to_produto=path_to_produto,
         path_to_box_table=path_to_box_table,
         path_to_box_produto_saldo=path_to_box_produto_saldo,
-        modify_to_check=modify_to_check,
+        modify_to_check_stock_balance=modify_to_check_stock_balance,
+        modify_to_check_deadtable=modify_to_check_deadtable,
     )
