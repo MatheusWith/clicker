@@ -23,6 +23,7 @@ class LoginFlowImpl(LoginFlow):
             path_to_password,
             path_to_login
         ])
+        self.path_to_username:str = self.base_path + path_to_username
         self.path_to_password:str = self.base_path + path_to_password
         self.path_to_login:str = self.base_path + path_to_login
 
