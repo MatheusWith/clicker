@@ -7,16 +7,13 @@ class SellerFlowImpl(SellerFlow):
         self,
         actions:ActionsInt,
         path_to_vendendor:str,
-        path_to_search:str,
     ):
         super().__init__(actions)
         self._enshure_paths_exist([
             path_to_vendendor,
-            path_to_search,
         ])
 
         self.path_to_vendendor:str = self.base_path + path_to_vendendor
-        self.path_to_search:str = self.base_path + path_to_search
 
     def _click_in_seller(self) -> None:
         seller_x, seller_y = self.actions.search(self.path_to_vendendor)
