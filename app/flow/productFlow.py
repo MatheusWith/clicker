@@ -49,7 +49,7 @@ class ProductFlowImpl(ProductFlow):
 
         self.actions.left_click(
             check_box_x,
-            check_box_y-self.modify_to_check_stock_balance,
+            check_box_y+self.modify_to_check_stock_balance,
         )
 
     def execute(self):
