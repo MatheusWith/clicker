@@ -112,7 +112,7 @@ class DocumentFlowImpl(DocumentFlow):
         self._open_doc_type()
         self._select_doc_type()
 
-        self.actions.left_click(
+        self.actions.hot_key(
             'alt',
             'p',
         )

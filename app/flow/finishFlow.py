@@ -35,22 +35,20 @@ class FinishFlowImpl(FinishFlow):
             self.path_to_yes_confirmation
         )
 
-        self.actions.left_click(
-            yes_x,
-            yes_y,
+        self.actions.hot_key(
+            'enter'
         )
 
-    def _click_ok(self):
+    def _do_ok(self):
         ok_x, ok_y = self.actions.search(
             self.path_to_ok_button
         )
-        self.actions.left_click(
-            ok_x,
-            ok_y,
+        self.actions.hot_key(
+            'enter'
         )
 
     def execute(self):
-        self._click_ok()
+        self._do_ok()
         self._click_in_finish_label()
         self._confirmation()
 
