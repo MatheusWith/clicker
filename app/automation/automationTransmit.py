@@ -52,7 +52,10 @@ class TransmitAutomationImpl(AutomationInt):
 
         self.actions:ActionsInt = getActionPyAutoGUIImpl()
 
-        self.flows: list[FlowInt] = [
+        self.flows:list[FlowInt] = self.get_flows()
+
+    def get_flows(self) -> list[FlowInt]:
+        return [
             getOpenFlowImpl(
                 actions=self.actions,
                 path_to_app_label="open_flow/app_label.png"
