@@ -13,74 +13,64 @@ from app.flow.transmitFlow import getTransmitFlowImpl
 from app.flow.finishFlow import getFinishFlowImpl
 from app.flow.openFlow import getOpenFlowImpl
 from app.actions.actionsPyAutoGui import getActionPyAutoGUIImpl
-from app.config.config import settings
-from app.config.exceptions import LoginSettinsIsNoneError
-from app.config.exceptions import PasswordSettinsIsNoneError
-from app.config.exceptions import EndDateSettinsIsNoneError, StartDateSettinsIsNoneError
+from pydantic import BaseModel
 
+
+class TransmitSchema(BaseModel):
+    login: str
+    password: str
+    start_date: str
+    end_date: str
+    mtf_login: int
+    mtf_seller: int
+    mtf_product_deadtable: int
+    mtf_product_stock_balance: int
+    mtf_document_open_doc_x: int
+    mtf_document_open_doc_y: int
+    mtf_document_date_init_x: int
+    mtf_document_date_init_y: int
+    mtf_document_date_end_x: int
+    mtf_document_date_end_y: int
+    mtf_open_x: int
+    mtf_open_y: int
 
 
 class TransmitAutomationImpl(AutomationInt):
-    def __init__(self):
-        if settings.LOGIN is None:
-            raise LoginSettinsIsNoneError
-        if settings.PASSWORD is None:
-            raise PasswordSettinsIsNoneError
+    def __init__(self, transmit: TransmitSchema):
+        self.transmit: TransmitSchema = transmit
+        self.actions: ActionsInt = getActionPyAutoGUIImpl()
 
-        if settings.START_DATE is None:
-            raise StartDateSettinsIsNoneError
-        if settings.END_DATE is None:
-            raise EndDateSettinsIsNoneError
-
-        if settings.MTF_LOGIN is None:
-            raise ValueError("Nao ha o modificador ate o campo")
-        if settings.MTF_SELLER is None:
-            raise ValueError("Nao ha o modificador seller")
-        if settings.MTF_DOCUMENT_OPEN_DOC_X is None:
-            raise ValueError("Nao ha o modificador docment")
-        if settings.MTF_DOCUMENT_OPEN_DOC_Y is None:
-            raise ValueError("Nao ha o modificador docment")
-        if settings.MTF_DOCUMENT_DATE_INIT_X is None:
-            raise ValueError("Nao ha o modificador docment")
-        if settings.MTF_DOCUMENT_DATE_INIT_Y is None:
-            raise ValueError("Nao ha o modificador docment")
-        if settings.MTF_DOCUMENT_DATE_END_X is None:
-            raise ValueError("Nao ha o modificador docment")
-        if settings.MTF_DOCUMENT_DATE_END_Y is None:
-            raise ValueError("Nao ha o modificador docment")
-
-
-        self.actions:ActionsInt = getActionPyAutoGUIImpl()
-
-        self.flows:list[FlowInt] = self.get_flows()
+        self.flows: list[FlowInt] = self.get_flows()
 
     def get_flows(self) -> list[FlowInt]:
         return [
             getOpenFlowImpl(
                 actions=self.actions,
-                path_to_app_label="open_flow/app_label.png"
+                modify_to_field_x=self.transmit.mtf_open_x,
+                modify_to_field_y=self.transmit.mtf_open_y,
+                path_to_app_label="open_flow/app_label.png",
             ),
             getLoginFlowImpl(
                 actions=self.actions,
                 path_to_username="login_flow/username_label.png",
                 path_to_password="login_flow/password_label.png",
                 path_to_login="login_flow/login_button.png",
-                username=settings.LOGIN,
-                password=settings.PASSWORD,
-                modify_to_field=settings.MTF_LOGIN,
+                username=self.transmit.login,
+                password=self.transmit.password,
+                modify_to_field=self.transmit.mtf_login,
             ),
             getSellerFlowImpl(
                 actions=self.actions,
                 path_to_vendendor="vendendor_flow/vendendor_label.png",
-                modify_to_check=settings.MTF_SELLER,
+                modify_to_check=self.transmit.mtf_seller,
             ),
             getProductFlowImpl(
                 actions=self.actions,
                 path_to_produto="product_flow/product_label.png",
                 path_to_box_produto_saldo="product_flow/product_saldo.png",
                 path_to_box_table="product_flow/deadline_table.png",
-                modify_to_check_stock_balance=settings.MTF_PRODUCT_STOCK_BALANCE,
-                modify_to_check_deadtable=settings.MTF_PRODUCT_DEADTABLE,
+                modify_to_check_stock_balance=self.transmit.mtf_product_stock_balance,
+                modify_to_check_deadtable=self.transmit.mtf_product_deadtable,
             ),
             getClientFlowImpl(
                 actions=self.actions,
@@ -97,14 +87,14 @@ class TransmitAutomationImpl(AutomationInt):
                 path_to_data_final_label="document_flow/inital_date_label.png",
                 path_to_document_type_label="document_flow/document_type_label.png",
                 path_to_boleto="document_flow/boleto.png",
-                start_date=settings.START_DATE,
-                end_date=settings.END_DATE,
-                modify_to_field_open_doc_x=settings.MTF_DOCUMENT_OPEN_DOC_X,
-                modify_to_field_open_doc_y=settings.MTF_DOCUMENT_OPEN_DOC_Y,
-                modify_to_field_date_init_x=settings.MTF_DOCUMENT_DATE_INIT_X,
-                modify_to_field_date_init_y=settings.MTF_DOCUMENT_DATE_INIT_Y,
-                modify_to_field_date_end_x=settings.MTF_DOCUMENT_DATE_END_X,
-                modify_to_field_date_end_y=settings.MTF_DOCUMENT_DATE_END_Y,
+                start_date=self.transmit.start_date,
+                end_date=self.transmit.end_date,
+                modify_to_field_open_doc_x=self.transmit.mtf_document_open_doc_x,
+                modify_to_field_open_doc_y=self.transmit.mtf_document_open_doc_y,
+                modify_to_field_date_init_x=self.transmit.mtf_document_date_init_x,
+                modify_to_field_date_init_y=self.transmit.mtf_document_date_init_y,
+                modify_to_field_date_end_x=self.transmit.mtf_document_date_end_x,
+                modify_to_field_date_end_y=self.transmit.mtf_document_date_end_y,
             ),
             getTransmitFlowImpl(
                 actions=self.actions,
@@ -121,11 +111,13 @@ class TransmitAutomationImpl(AutomationInt):
     def run(self):
         for f in self.flows:
             f.execute()
-            if isinstance(f,TransmitFlow):
+            if isinstance(f, TransmitFlow):
                 time.sleep(120)
             else:
                 time.sleep(10)
 
 
-def getTransmitAutomationImpl() -> TransmitAutomationImpl:
-    return TransmitAutomationImpl()
+def getTransmitAutomationImpl(
+    transmit: TransmitSchema,
+) -> TransmitAutomationImpl:
+    return TransmitAutomationImpl(transmit=transmit)
