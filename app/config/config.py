@@ -8,40 +8,46 @@ class CredentialsSettings(BaseSettings):
     LOGIN: str
     PASSWORD: str
 
+
 class DataParameterSettings(BaseSettings):
-    START_DATE:str
-    END_DATE:str
+    START_DATE: str
+    END_DATE: str
+
 
 class ToFieldSettings(BaseSettings):
-    MTF_SELLER:int = 8
+    MTF_OPEN_X: int = 0
+    MTF_OPEN_Y: int = 0
 
-    MTF_LOGIN:int = 8
+    MTF_SELLER: int = 8
 
-    MTF_PRODUCT_STOCK_BALANCE:int = -8
-    MTF_PRODUCT_DEADTABLE:int = -100
+    MTF_LOGIN: int = 8
 
-    MTF_DOCUMENT_OPEN_DOC_X:int = 55
-    MTF_DOCUMENT_OPEN_DOC_Y:int = 25
-    MTF_DOCUMENT_DATE_INIT_X:int = -20
-    MTF_DOCUMENT_DATE_INIT_Y:int = 25
-    MTF_DOCUMENT_DATE_END_X:int = 50
-    MTF_DOCUMENT_DATE_END_Y:int = 25
-    
+    MTF_PRODUCT_STOCK_BALANCE: int = -8
+    MTF_PRODUCT_DEADTABLE: int = -100
+
+    MTF_DOCUMENT_OPEN_DOC_X: int = 55
+    MTF_DOCUMENT_OPEN_DOC_Y: int = 25
+    MTF_DOCUMENT_DATE_INIT_X: int = -20
+    MTF_DOCUMENT_DATE_INIT_Y: int = 25
+    MTF_DOCUMENT_DATE_END_X: int = 50
+    MTF_DOCUMENT_DATE_END_Y: int = 25
+
+
 class PyAutoGUISettings(BaseSettings):
     FAILSAFE: bool = True
     PAUSE: float = 2.5
-    CONFIDANCE:float = 0.8
+    CONFIDANCE: float = 0.8
 
     @field_validator("CONFIDANCE")
     @classmethod
-    def validate_confidance(cls, v:float) -> float:
+    def validate_confidance(cls, v: float) -> float:
         if not 0 <= v <= 1:
             raise ValueError("CONFIDANCE must be between 0.0 to 1.0")
         return v
 
     @field_validator("PAUSE")
     @classmethod
-    def validate_pause(cls,v:float) -> float:
+    def validate_pause(cls, v: float) -> float:
         if v < 0:
             raise ValueError("PAUSE doenst is negative")
         return v
@@ -56,8 +62,9 @@ class EnvironmentOption(str, Enum):
 class EnvironmentSettings(BaseSettings):
     ENVIRONMENT: EnvironmentOption = EnvironmentOption.LOCAL
 
+
 class IMGBasePathSettings(BaseSettings):
-    img_path:str = "app/img/"
+    img_path: str = "app/img/"
 
 
 class Settings(
@@ -69,7 +76,9 @@ class Settings(
     ToFieldSettings,
 ):
     model_config = SettingsConfigDict(
-        env_file = os.path.join(os.path.dirname(os.path.realpath(__file__)),"..","..",".env"),
+        env_file=os.path.join(
+            os.path.dirname(os.path.realpath(__file__)), "..", "..", ".env"
+        ),
         env_file_encoding="utf-8",
         case_sensitive=True,
         extra="ignore",
