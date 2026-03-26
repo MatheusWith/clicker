@@ -20,7 +20,8 @@ class ToFieldSettings(BaseSettings):
 
     MTF_SELLER: int = 8
 
-    MTF_LOGIN: int = 8
+    MTF_LOGIN_X: int = 8
+    MTF_LOGIN_Y: int = 8
 
     MTF_PRODUCT_STOCK_BALANCE: int = -8
     MTF_PRODUCT_DEADTABLE: int = -100
