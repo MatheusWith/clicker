@@ -2,46 +2,44 @@ from app.flow.flows import LoginFlow
 from app.actions.actionsInt import ActionsInt
 
 
-
 class LoginFlowImpl(LoginFlow):
-    def __init__(self, 
-        actions:ActionsInt,
-        path_to_username:str, 
-        path_to_password:str, 
-        path_to_login:str,
-        username:str,
-        password:str,
-        modify_to_field:int,
+    def __init__(
+        self,
+        actions: ActionsInt,
+        path_to_username: str,
+        path_to_password: str,
+        path_to_login: str,
+        username: str,
+        password: str,
+        modify_to_field_x: int,
+        modify_to_field_y: int,
     ):
         super().__init__(actions)
 
-        self.username:str = username
-        self.password:str = password
-        self.modify_to_field:int = modify_to_field
-        self._enshure_paths_exist([
-            path_to_username,
-            path_to_password,
-            path_to_login
-        ])
-        self.path_to_username:str = self.base_path + path_to_username
-        self.path_to_password:str = self.base_path + path_to_password
-        self.path_to_login:str = self.base_path + path_to_login
+        self.username: str = username
+        self.password: str = password
+        self.modify_to_field_x: int = modify_to_field_x
+        self.modify_to_field_y: int = modify_to_field_y
+        self._enshure_paths_exist([path_to_username, path_to_password, path_to_login])
+        self.path_to_username: str = self.base_path + path_to_username
+        self.path_to_password: str = self.base_path + path_to_password
+        self.path_to_login: str = self.base_path + path_to_login
 
     def _do_username(self) -> None:
         username_label_x, username_label_y = self.actions.search(self.path_to_username)
         self.actions.left_click(
-            username_label_x,
-            username_label_y+self.modify_to_field,
+            username_label_x + self.modify_to_field_x,
+            username_label_y + self.modify_to_field_y,
         )
 
         self.actions.write(self.username)
 
     def _do_password(self) -> None:
-        password_label_x,password_label_y = self.actions.search(self.path_to_password)
+        password_label_x, password_label_y = self.actions.search(self.path_to_password)
 
         self.actions.left_click(
-            password_label_x,
-            password_label_y+self.modify_to_field, 
+            password_label_x + self.modify_to_field_x,
+            password_label_y + self.modify_to_field_y,
         )
         self.actions.write(self.password)
 
@@ -55,14 +53,16 @@ class LoginFlowImpl(LoginFlow):
             login_y,
         )
 
+
 def getLoginFlowImpl(
-    actions:ActionsInt,
-    path_to_username:str,
-    path_to_password:str,
-    path_to_login:str,
-    username:str,
-    password:str,
-    modify_to_field:int,
+    actions: ActionsInt,
+    path_to_username: str,
+    path_to_password: str,
+    path_to_login: str,
+    username: str,
+    password: str,
+    modify_to_field_x: int,
+    modify_to_field_y: int,
 ) -> LoginFlow:
     return LoginFlowImpl(
         actions=actions,
@@ -71,5 +71,6 @@ def getLoginFlowImpl(
         path_to_login=path_to_login,
         username=username,
         password=password,
-        modify_to_field=modify_to_field,
+        modify_to_field_x=modify_to_field_x,
+        modify_to_field_y=modify_to_field_y,
     )
