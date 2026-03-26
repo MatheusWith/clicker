@@ -13,6 +13,8 @@ class LoginFlowImpl(LoginFlow):
         password: str,
         modify_to_field_x: int,
         modify_to_field_y: int,
+        modify_to_field_button_x: int,
+        modify_to_field_button_y: int,
     ):
         super().__init__(actions)
 
@@ -20,6 +22,8 @@ class LoginFlowImpl(LoginFlow):
         self.password: str = password
         self.modify_to_field_x: int = modify_to_field_x
         self.modify_to_field_y: int = modify_to_field_y
+        self.modify_to_field_button_x: int = modify_to_field_button_x
+        self.modify_to_field_button_y: int = modify_to_field_button_y
         self._enshure_paths_exist([path_to_username, path_to_password, path_to_login])
         self.path_to_username: str = self.base_path + path_to_username
         self.path_to_password: str = self.base_path + path_to_password
@@ -49,8 +53,8 @@ class LoginFlowImpl(LoginFlow):
 
         login_x, login_y = self.actions.search(self.path_to_login)
         self.actions.left_click(
-            login_x,
-            login_y,
+            login_x + self.modify_to_field_button_x,
+            login_y + self.modify_to_field_button_y,
         )
 
 
@@ -63,6 +67,8 @@ def getLoginFlowImpl(
     password: str,
     modify_to_field_x: int,
     modify_to_field_y: int,
+    modify_to_field_button_x: int,
+    modify_to_field_button_y: int,
 ) -> LoginFlow:
     return LoginFlowImpl(
         actions=actions,
@@ -73,4 +79,6 @@ def getLoginFlowImpl(
         password=password,
         modify_to_field_x=modify_to_field_x,
         modify_to_field_y=modify_to_field_y,
+        modify_to_field_button_x=modify_to_field_button_x,
+        modify_to_field_button_y=modify_to_field_button_y,
     )

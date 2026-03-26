@@ -22,6 +22,8 @@ class ToFieldSettings(BaseSettings):
 
     MTF_LOGIN_X: int = 8
     MTF_LOGIN_Y: int = 8
+    MTF_LOGIN_BUTTON_X: int = 0
+    MTF_LOGIN_BUTTON_Y: int = 0
 
     MTF_PRODUCT_STOCK_BALANCE: int = -8
     MTF_PRODUCT_DEADTABLE: int = -100
