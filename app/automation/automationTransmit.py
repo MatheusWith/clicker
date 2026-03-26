@@ -23,6 +23,8 @@ class TransmitSchema(BaseModel):
     end_date: str
     mtf_login_x: int
     mtf_login_y: int
+    mtf_login_button_x: int
+    mtf_login_button_y: int
     mtf_seller: int
     mtf_product_deadtable: int
     mtf_product_stock_balance: int
@@ -60,6 +62,8 @@ class TransmitAutomationImpl(AutomationInt):
                 password=self.transmit.password,
                 modify_to_field_x=self.transmit.mtf_login_x,
                 modify_to_field_y=self.transmit.mtf_login_y,
+                modify_to_field_button_x=self.transmit.mtf_login_button_x,
+                modify_to_field_button_y=self.transmit.mtf_login_button_y,
             ),
             getSellerFlowImpl(
                 actions=self.actions,

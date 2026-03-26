@@ -14,6 +14,8 @@ def main():
         end_date=settings.END_DATE,
         mtf_login_x=settings.MTF_LOGIN_X,
         mtf_login_y=settings.MTF_LOGIN_Y,
+        mtf_login_button_x=settings.MTF_LOGIN_BUTTON_X,
+        mtf_login_button_y=settings.MTF_LOGIN_BUTTON_Y,
         mtf_seller=settings.MTF_SELLER,
         mtf_product_deadtable=settings.MTF_PRODUCT_DEADTABLE,
         mtf_product_stock_balance=settings.MTF_PRODUCT_STOCK_BALANCE,
