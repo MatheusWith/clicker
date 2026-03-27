@@ -26,8 +26,10 @@ class TransmitSchema(BaseModel):
     mtf_login_button_x: int
     mtf_login_button_y: int
     mtf_seller: int
-    mtf_product_deadtable: int
-    mtf_product_stock_balance: int
+    mtf_product_deadtable_x: int
+    mtf_product_deadtable_y: int
+    mtf_product_stock_balance_x: int
+    mtf_product_stock_balance_y: int
     mtf_document_open_doc_x: int
     mtf_document_open_doc_y: int
     mtf_document_date_init_x: int
@@ -36,6 +38,8 @@ class TransmitSchema(BaseModel):
     mtf_document_date_end_y: int
     mtf_open_x: int
     mtf_open_y: int
+    mtf_product_x: int
+    mtf_product_y: int
 
 
 class TransmitAutomationImpl(AutomationInt):
@@ -75,8 +79,12 @@ class TransmitAutomationImpl(AutomationInt):
                 path_to_produto="product_flow/product_label.png",
                 path_to_box_produto_saldo="product_flow/product_saldo.png",
                 path_to_box_table="product_flow/deadline_table.png",
-                modify_to_check_stock_balance=self.transmit.mtf_product_stock_balance,
-                modify_to_check_deadtable=self.transmit.mtf_product_deadtable,
+                modify_to_product_x=self.transmit.mtf_product_x,
+                modify_to_product_y=self.transmit.mtf_product_y,
+                modify_to_check_stock_balance_x=self.transmit.mtf_product_stock_balance_x,
+                modify_to_check_stock_balance_y=self.transmit.mtf_product_stock_balance_y,
+                modify_to_check_deadtable_x=self.transmit.mtf_product_deadtable_x,
+                modify_to_check_deadtable_y=self.transmit.mtf_product_deadtable_y,
             ),
             getClientFlowImpl(
                 actions=self.actions,
