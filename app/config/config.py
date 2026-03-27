@@ -32,12 +32,21 @@ class ToFieldSettings(BaseSettings):
     MTF_PRODUCT_DEADTABLE_X: int = -100
     MTF_PRODUCT_DEADTABLE_Y: int = -100
 
+    MTF_CLIENT_X: int = 0
+    MTF_CLIENT_Y: int = 0
+
+    MTF_PAYMENT_X: int = 0
+    MTF_PAYMENT_Y: int = 0
+
     MTF_DOCUMENT_OPEN_DOC_X: int = 55
     MTF_DOCUMENT_OPEN_DOC_Y: int = 25
     MTF_DOCUMENT_DATE_INIT_X: int = -20
     MTF_DOCUMENT_DATE_INIT_Y: int = 25
     MTF_DOCUMENT_DATE_END_X: int = 50
     MTF_DOCUMENT_DATE_END_Y: int = 25
+
+    MTF_TRANSMIT_X: int = 0
+    MTF_TRANSMIT_Y: int = 0
 
 
 class PyAutoGUISettings(BaseSettings):

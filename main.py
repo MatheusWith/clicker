@@ -31,6 +31,12 @@ def main():
         mtf_document_date_end_y=settings.MTF_DOCUMENT_DATE_END_Y,
         mtf_open_x=settings.MTF_OPEN_X,
         mtf_open_y=settings.MTF_OPEN_Y,
+        mtf_client_x=settings.MTF_CLIENT_X,
+        mtf_client_y=settings.MTF_CLIENT_Y,
+        mtf_payment_x=settings.MTF_PAYMENT_X,
+        mtf_payment_y=settings.MTF_PAYMENT_Y,
+        mtf_transmit_x=settings.MTF_TRANSMIT_X,
+        mtf_transmit_y=settings.MTF_TRANSMIT_Y,
     )
     transmitAutomation: AutomationInt = getTransmitAutomationImpl(
         transmit=transmit_schema

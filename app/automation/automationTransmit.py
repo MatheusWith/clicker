@@ -40,6 +40,12 @@ class TransmitSchema(BaseModel):
     mtf_open_y: int
     mtf_product_x: int
     mtf_product_y: int
+    mtf_client_x: int
+    mtf_client_y: int
+    mtf_payment_x: int
+    mtf_payment_y: int
+    mtf_transmit_x: int
+    mtf_transmit_y: int
 
 
 class TransmitAutomationImpl(AutomationInt):
@@ -89,10 +95,14 @@ class TransmitAutomationImpl(AutomationInt):
             getClientFlowImpl(
                 actions=self.actions,
                 path_to_client="client_flow/client_label.png",
+                modify_to_field_x=self.transmit.mtf_client_x,
+                modify_to_field_y=self.transmit.mtf_client_y,
             ),
             getPaymentPlanFlowImpl(
                 actions=self.actions,
                 path_to_plano_pagamento="plano_pagamento_flow/plano_pagamento_label.png",
+                modify_to_field_x=self.transmit.mtf_payment_x,
+                modify_to_field_y=self.transmit.mtf_payment_y,
             ),
             getDocumentFlowImpl(
                 actions=self.actions,
@@ -113,6 +123,8 @@ class TransmitAutomationImpl(AutomationInt):
             getTransmitFlowImpl(
                 actions=self.actions,
                 path_to_transmitir="transmit_flow/transmit_button.png",
+                modify_to_field_x=self.transmit.mtf_transmit_x,
+                modify_to_field_y=self.transmit.mtf_transmit_y,
             ),
             getFinishFlowImpl(
                 actions=self.actions,
