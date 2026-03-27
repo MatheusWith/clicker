@@ -47,6 +47,8 @@ class ToFieldSettings(BaseSettings):
 
     MTF_TRANSMIT_X: int = 0
     MTF_TRANSMIT_Y: int = 0
+    MTF_DOC_X: int = 0
+    MTF_DOC_Y: int = 0
 
 
 class PyAutoGUISettings(BaseSettings):

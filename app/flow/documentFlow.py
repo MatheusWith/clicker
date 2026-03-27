@@ -14,6 +14,8 @@ class DocumentFlowImpl(DocumentFlow):
         path_to_boleto: str,
         start_date: str,
         end_date: str,
+        modify_to_field_doc_x: int,
+        modify_to_field_doc_y: int,
         modify_to_field_open_doc_x: int,
         modify_to_field_open_doc_y: int,
         modify_to_field_date_init_x: int,
@@ -56,6 +58,8 @@ class DocumentFlowImpl(DocumentFlow):
 
         self.modify_to_field_date_end_x: int = modify_to_field_date_end_x
         self.modify_to_field_date_end_y: int = modify_to_field_date_end_y
+        self.modify_to_field_doc_x: int = modify_to_field_doc_x
+        self.modify_to_field_doc_y: int = modify_to_field_doc_y
 
     def _open_doc_type(self) -> None:
         doc_type_label_x, doc_type_label_y = self.actions.search(
@@ -77,8 +81,8 @@ class DocumentFlowImpl(DocumentFlow):
     def _click_in_documento(self) -> None:
         doc_x, doc_y = self.actions.search(self.path_to_documento)
         self.actions.left_click(
-            doc_x,
-            doc_y,
+            doc_x + self.modify_to_field_doc_x,
+            doc_y + self.modify_to_field_doc_y,
         )
 
     def _write_data_inicial(self) -> None:
@@ -129,6 +133,8 @@ def getDocumentFlowImpl(
     modify_to_field_date_init_x: int,
     modify_to_field_date_init_y: int,
     modify_to_field_date_end_x: int,
+    modify_to_field_doc_x: int,
+    modify_to_field_doc_y: int,
     modify_to_field_date_end_y: int,
 ) -> DocumentFlow:
     return DocumentFlowImpl(
@@ -140,6 +146,8 @@ def getDocumentFlowImpl(
         path_to_boleto=path_to_boleto,
         start_date=start_date,
         end_date=end_date,
+        modify_to_field_doc_x=modify_to_field_doc_x,
+        modify_to_field_doc_y=modify_to_field_doc_y,
         modify_to_field_open_doc_x=modify_to_field_open_doc_x,
         modify_to_field_open_doc_y=modify_to_field_open_doc_y,
         modify_to_field_date_init_x=modify_to_field_date_init_x,

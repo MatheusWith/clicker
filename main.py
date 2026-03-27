@@ -37,6 +37,8 @@ def main():
         mtf_payment_y=settings.MTF_PAYMENT_Y,
         mtf_transmit_x=settings.MTF_TRANSMIT_X,
         mtf_transmit_y=settings.MTF_TRANSMIT_Y,
+        mtf_doc_x=settings.MTF_DOC_X,
+        mtf_doc_y=settings.MTF_DOC_Y,
     )
     transmitAutomation: AutomationInt = getTransmitAutomationImpl(
         transmit=transmit_schema
