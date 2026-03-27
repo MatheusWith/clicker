@@ -46,7 +46,7 @@ class TransmitSchema(BaseModel):
     mtf_payment_y: int
     mtf_transmit_x: int
     mtf_transmit_y: int
-    mft_doc_x: int
+    mtf_doc_x: int
     mtf_doc_y: int
 
 
@@ -113,8 +113,8 @@ class TransmitAutomationImpl(AutomationInt):
                 path_to_data_final_label="document_flow/inital_date_label.png",
                 path_to_document_type_label="document_flow/document_type_label.png",
                 path_to_boleto="document_flow/boleto.png",
-                modify_to_field_doc_x=self.transmit.mft_doc_x,
-                modify_to_field_doc_y=self.transmit.mft_doc_y,
+                modify_to_field_doc_x=self.transmit.mtf_doc_x,
+                modify_to_field_doc_y=self.transmit.mtf_doc_y,
                 start_date=self.transmit.start_date,
                 end_date=self.transmit.end_date,
                 modify_to_field_open_doc_x=self.transmit.mtf_document_open_doc_x,
