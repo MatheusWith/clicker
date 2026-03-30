@@ -22,8 +22,8 @@ class DocumentFlowImpl(DocumentFlow):
         modify_to_field_date_init_y: int,
         modify_to_field_date_end_x: int,
         modify_to_field_date_end_y: int,
-        modify_to_check_boleto_x: int,
-        modify_to_check_boleto_y: int,
+        modify_to_field_boleto_x: int,
+        modify_to_field_boleto_y: int,
     ):
 
         super().__init__(actions)
@@ -54,17 +54,15 @@ class DocumentFlowImpl(DocumentFlow):
         self.modify_to_field_open_doc_y: int = modify_to_field_open_doc_y
 
         self.modify_to_field_date_init_x: int = modify_to_field_date_init_x
-        self.modify_to_field_date_initmodify_to_field_x_y: int = (
-            modify_to_field_date_init_y
-        )
+        self.modify_to_field_date_init_y: int = modify_to_field_date_init_y
 
         self.modify_to_field_date_end_x: int = modify_to_field_date_end_x
         self.modify_to_field_date_end_y: int = modify_to_field_date_end_y
         self.modify_to_field_doc_x: int = modify_to_field_doc_x
         self.modify_to_field_doc_y: int = modify_to_field_doc_y
 
-        self.modify_to_check_boleto_x: int = modify_to_check_boleto_x
-        self.modify_to_check_boleto_y: int = modify_to_check_boleto_y
+        self.modify_to_field_boleto_x: int = modify_to_field_boleto_x
+        self.modify_to_field_boleto_y: int = modify_to_field_boleto_y
 
     def _open_doc_type(self) -> None:
         doc_type_label_x, doc_type_label_y = self.actions.search(
