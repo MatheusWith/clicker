@@ -127,8 +127,8 @@ class TransmitAutomationImpl(AutomationInt):
                 modify_to_field_date_init_y=self.transmit.mtf_document_date_init_y,
                 modify_to_field_date_end_x=self.transmit.mtf_document_date_end_x,
                 modify_to_field_date_end_y=self.transmit.mtf_document_date_end_y,
-                modify_to_check_boleto_x=self.transmit.mtf_boleto_x,
-                modify_to_check_boleto_y=self.transmit.mtf_boleto_y,
+                modify_to_field_boleto_x=self.transmit.mtf_boleto_x,
+                modify_to_field_boleto_y=self.transmit.mtf_boleto_y,
             ),
             getTransmitFlowImpl(
                 actions=self.actions,
