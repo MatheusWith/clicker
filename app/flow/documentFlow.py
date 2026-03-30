@@ -52,9 +52,7 @@ class DocumentFlowImpl(DocumentFlow):
         self.modify_to_field_open_doc_y: int = modify_to_field_open_doc_y
 
         self.modify_to_field_date_init_x: int = modify_to_field_date_init_x
-        self.modify_to_field_date_initmodify_to_field_x_y: int = (
-            modify_to_field_date_init_y
-        )
+        self.modify_to_field_date_init_y: int = modify_to_field_date_init_y
 
         self.modify_to_field_date_end_x: int = modify_to_field_date_end_x
         self.modify_to_field_date_end_y: int = modify_to_field_date_end_y
@@ -139,6 +137,8 @@ def getDocumentFlowImpl(
     modify_to_field_doc_x: int,
     modify_to_field_doc_y: int,
     modify_to_field_date_end_y: int,
+    modify_to_field_boleto_x: int,
+    modify_to_field_boleto_y: int,
 ) -> DocumentFlow:
     return DocumentFlowImpl(
         actions=actions,
@@ -157,4 +157,6 @@ def getDocumentFlowImpl(
         modify_to_field_date_init_y=modify_to_field_date_init_y,
         modify_to_field_date_end_x=modify_to_field_date_end_x,
         modify_to_field_date_end_y=modify_to_field_date_end_y,
+        modify_to_field_boleto_x=modify_to_field_boleto_x,
+        modify_to_field_boleto_y=modify_to_field_boleto_y,
     )
