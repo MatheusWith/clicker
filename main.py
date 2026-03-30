@@ -39,6 +39,10 @@ def main():
         mtf_transmit_y=settings.MTF_TRANSMIT_Y,
         mtf_doc_x=settings.MTF_DOC_X,
         mtf_doc_y=settings.MTF_DOC_Y,
+        mtf_boleto_x=settings.MTF_BOLETO_X,
+        mtf_boleto_y=settings.MTF_BOLETO_Y,
+        mtf_finish_x=settings.MTF_FINISH_X,
+        mtf_finish_y=settings.MTF_FINISH_Y,
     )
     transmitAutomation: AutomationInt = getTransmitAutomationImpl(
         transmit=transmit_schema
