@@ -74,8 +74,8 @@ class DocumentFlowImpl(DocumentFlow):
     def _select_doc_type(self) -> None:
         boleto_x, boleto_y = self.actions.search(self.path_to_boleto)
         self.actions.left_click(
-            boleto_x + self.modify_to_check_boleto_x,
-            boleto_y + self.modify_to_check_boleto_y,
+            boleto_x + self.modify_to_field_boleto_x,
+            boleto_y + self.modify_to_field_boleto_y,
             clicks=2,
         )
 
