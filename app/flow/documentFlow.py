@@ -22,8 +22,9 @@ class DocumentFlowImpl(DocumentFlow):
         modify_to_field_date_init_y: int,
         modify_to_field_date_end_x: int,
         modify_to_field_date_end_y: int,
+        modify_to_field_boleto_x: int,
+        modify_to_field_boleto_y: int,
     ):
-
         super().__init__(actions)
         self._enshure_paths_exist(
             [
@@ -52,14 +53,14 @@ class DocumentFlowImpl(DocumentFlow):
         self.modify_to_field_open_doc_y: int = modify_to_field_open_doc_y
 
         self.modify_to_field_date_init_x: int = modify_to_field_date_init_x
-        self.modify_to_field_date_initmodify_to_field_x_y: int = (
-            modify_to_field_date_init_y
-        )
-
+        self.modify_to_field_date_init_y: int = modify_to_field_date_init_y
         self.modify_to_field_date_end_x: int = modify_to_field_date_end_x
         self.modify_to_field_date_end_y: int = modify_to_field_date_end_y
         self.modify_to_field_doc_x: int = modify_to_field_doc_x
         self.modify_to_field_doc_y: int = modify_to_field_doc_y
+
+        self.modify_to_field_boleto_x: int = modify_to_field_boleto_x
+        self.modify_to_field_boleto_y: int = modify_to_field_boleto_y
 
     def _open_doc_type(self) -> None:
         doc_type_label_x, doc_type_label_y = self.actions.search(
@@ -73,8 +74,8 @@ class DocumentFlowImpl(DocumentFlow):
     def _select_doc_type(self) -> None:
         boleto_x, boleto_y = self.actions.search(self.path_to_boleto)
         self.actions.left_click(
-            boleto_x,
-            boleto_y,
+            boleto_x + self.modify_to_check_boleto_x,
+            boleto_y + self.modify_to_check_boleto_y,
             clicks=2,
         )
 
@@ -136,6 +137,8 @@ def getDocumentFlowImpl(
     modify_to_field_doc_x: int,
     modify_to_field_doc_y: int,
     modify_to_field_date_end_y: int,
+    modify_to_check_boleto_x: int,
+    modify_to_check_boleto_y: int,
 ) -> DocumentFlow:
     return DocumentFlowImpl(
         actions=actions,
@@ -154,4 +157,6 @@ def getDocumentFlowImpl(
         modify_to_field_date_init_y=modify_to_field_date_init_y,
         modify_to_field_date_end_x=modify_to_field_date_end_x,
         modify_to_field_date_end_y=modify_to_field_date_end_y,
+        modify_to_check_boleto_x=modify_to_check_boleto_x,
+        modify_to_check_boleto_y=modify_to_check_boleto_y,
     )

@@ -48,6 +48,10 @@ class TransmitSchema(BaseModel):
     mtf_transmit_y: int
     mtf_doc_x: int
     mtf_doc_y: int
+    mtf_boleto_x: int
+    mtf_boleto_y: int
+    mtf_finish_x: int
+    mtf_finish_y: int
 
 
 class TransmitAutomationImpl(AutomationInt):
@@ -123,6 +127,8 @@ class TransmitAutomationImpl(AutomationInt):
                 modify_to_field_date_init_y=self.transmit.mtf_document_date_init_y,
                 modify_to_field_date_end_x=self.transmit.mtf_document_date_end_x,
                 modify_to_field_date_end_y=self.transmit.mtf_document_date_end_y,
+                modify_to_check_boleto_x=self.transmit.mtf_boleto_x,
+                modify_to_check_boleto_y=self.transmit.mtf_boleto_y,
             ),
             getTransmitFlowImpl(
                 actions=self.actions,
@@ -135,6 +141,8 @@ class TransmitAutomationImpl(AutomationInt):
                 path_to_finish_label="finish_flow/finish_label.png",
                 path_to_yes_confirmation="finish_flow/yes_confirmation.png",
                 path_to_ok_button="finish_flow/ok_button.png",
+                modify_to_field_finish_x=self.transmit.mtf_finish_x,
+                modify_to_field_finish_y=self.transmit.mtf_finish_y,
             ),
         ]
 
